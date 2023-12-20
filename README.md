@@ -29,3 +29,6 @@
 レシピ保存
 保存一覧
 カテゴリ分け
+
+Figmaリンク
+https://www.figma.com/file/q7widoIwWjuefhxADEomfm/%E7%84%A1%E9%A1%8C?type=design&node-id=12%3A57&mode=design&t=ePYl3X44LdUyID2n-1
