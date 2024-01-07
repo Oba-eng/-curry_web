@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   resources :menus
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
+  root 'menus#index'
 
+  delete 'logout', to: 'sessions#destroy'
+  get 'logout', to: 'sessions#destroy', as: :logout_get
 
-  
 end
