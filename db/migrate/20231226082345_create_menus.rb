@@ -1,10 +1,10 @@
 class CreateMenus < ActiveRecord::Migration[5.2]
   def change
     create_table :menus do |t|
-      t.string :name
-      t.string :material
-      t.text :make
-      t.text :point
+      t.string :name, null: false
+      t.string :material, null: false
+      t.text :make, null: false
+      t.text :point, null: false
 
       t.timestamps
     end

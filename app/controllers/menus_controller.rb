@@ -23,15 +23,11 @@ class MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
 
-    respond_to do |format|
       if @menu.save
-        format.html { redirect_to menu_url(@menu), notice: "Menu was successfully created." }
-        format.json { render :show, status: :created, location: @menu }
+        redirect_to menus_path, notice: "Menu was successfully created."
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
+        render :new
       end
-    end
   end
 
   # PATCH/PUT /menus/1 or /menus/1.json

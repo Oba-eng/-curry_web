@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">CarryWeb</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
+<% if current_user.present? %>
+  <%= current_user.name %>
+<% end %>
+
+<ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+  <% if current_user.present? %>
+  <li class="nav-item">
+    <%= link_to '投稿一覧', menus_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to '投稿作成', new_menu_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link', data: { confirm: 'ログアウトします' } %>
+  </li>
+  <% else %>
+  <li class="nav-item">
+    <%= link_to 'ユーザー登録', new_user_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'ログイン', new_session_path, class: 'nav-link' %>
+  </li>
+  <% end %>
+</ul>
+
+
+</div>
+  </div>
+</nav>

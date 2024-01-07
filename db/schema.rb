@@ -20,22 +20,21 @@ ActiveRecord::Schema.define(version: 2023_12_27_080427) do
   end
 
   create_table "menus", force: :cascade do |t|
-    t.string "name"
-    t.string "material"
-    t.text "make"
-    t.text "point"
+    t.string "name", null: false
+    t.string "material", null: false
+    t.text "make", null: false
+    t.text "point", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.string "crypted_password"
-    t.string "salt"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
