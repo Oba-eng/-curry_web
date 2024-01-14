@@ -2,33 +2,32 @@
   <% if menu.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
-
       <ul>
-      <% menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% menu.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :material %>
-    <%= form.text_field :material %>
+    <%= form.text_field :material, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :make %>
-    <%= form.text_area :make %>
+    <%= form.text_area :make, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :point %>
-    <%= form.text_area :point %>
+    <%= form.text_area :point, class: 'form-control' %>
   </div>
 
   <div class="actions">
