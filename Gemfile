@@ -63,3 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sorcery'
 gem 'pry-byebug'
 gem 'webpacker', '~> 5.0'
+gem 'bootstrap'
+gem 'sassc-rails'
