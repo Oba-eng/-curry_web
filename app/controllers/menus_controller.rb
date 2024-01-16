@@ -61,6 +61,6 @@ class MenusController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def menu_params
-      params.require(:menu).permit(:name, :material, :make, :point)
+      params.require(:menu).permit(:name, :material, :make, :point, :menu_image, :menu_image_cache)
     end
 end

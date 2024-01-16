@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-12 mb-3">
+    <%= link_to menu_path(menu), class: 'menu-card' do %>
+      <!-- 画像がある場合は以下のように表示 -->
+      <div class="menu-image">
+        <% if menu.menu_image.present? %>
+          <%= image_tag menu.menu_image.url, alt: 'Menu Image', class: 'img-thumbnail' %>
+        <% else %>
+          画像なし
+        <% end %>
+      </div>      
+      <!-- ここに@menuの内容を表示するコードを追加 -->
+      <div class="menu-container">
+        <div class="menu-name">
+          <%= menu.name %>
+        </div>
+        <div class="menu-material">
+          <%= menu.material %>
+        </div>
+        <div class="menu-point">
+          <%= menu.point %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

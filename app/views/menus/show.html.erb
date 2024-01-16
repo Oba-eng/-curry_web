@@ -20,5 +20,8 @@
   <%= @menu.point %>
 </p>
 
+
+<%= link_to 'Destroy', @menu, method: :delete, data: { confirm: 'Are you sure?' } %>
+<!-- ↑ここまで一覧から引っ越しした↑ -->
 <%= link_to 'Edit', edit_menu_path(@menu) %> |
 <%= link_to 'Back', menus_path %>
