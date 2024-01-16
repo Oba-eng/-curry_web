@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_08_060621) do
+ActiveRecord::Schema.define(version: 2024_01_14_115519) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2024_01_08_060621) do
     t.text "point", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "menu_image"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,6 +44,8 @@ ActiveRecord::Schema.define(version: 2024_01_08_060621) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
+    t.string "menu_image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

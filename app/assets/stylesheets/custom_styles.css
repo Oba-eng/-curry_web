@@ -32,3 +32,57 @@
   line-height: 1.8;
   font-weight: bold;
 }
+
+/* ↓メニュー一覧に使用したcss↓ */
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.5rem 1.5rem;
+}
+
+.card-text:last-child {
+  margin-bottom: 0;
+}
+
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #f5f4f8;
+  border: 1px solid #e8e7ed;
+  border-radius: 0.25rem;
+  max-width: 100%;
+  height: auto;
+  width: 300px;
+  height: 200px;
+}
+
+.menu-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap; /* 子要素を折り返さないように設定 */
+  justify-content: space-between; /* 子要素を横に均等に配置 */
+}
+
+.menu-container {
+  width: calc(25% - 15px); /* 25%の幅で子要素を配置（15pxはpaddingの影響を考慮） */
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-name {
+  font-size: 1.9em;
+  color: brown;
+}
+
+.menu-material {
+  /* 材料に関するスタイルを追加 */
+}
+
+.menu-point {
+  background-color: rgb(209, 240, 209);
+}
