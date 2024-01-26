@@ -12,6 +12,8 @@
   <%= current_user.name %>
 <% end %>
 
+<%= render 'search', q: @q, url: menus_path %>
+
 <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
   <% if current_user.present? %>
   <li class="nav-item">

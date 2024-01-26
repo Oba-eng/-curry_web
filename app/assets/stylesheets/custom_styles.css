@@ -35,6 +35,12 @@
 
 /* ↓メニュー一覧に使用したcss↓ */
 
+.row {
+  margin-bottom: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .card-body {
   flex: 1 1 auto;
   padding: 1.5rem 1.5rem;
@@ -44,45 +50,47 @@
   margin-bottom: 0;
 }
 
-.img-thumbnail {
+.menu-image {
   padding: 0.25rem;
   background-color: #f5f4f8;
-  border: 1px solid #e8e7ed;
-  border-radius: 0.25rem;
-  max-width: 100%;
-  height: auto;
-  width: 300px;
-  height: 200px;
+  width: 360px;
+  height: 130px;
+}
+
+.img-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .menu-card {
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 800px;
-  margin: 0 auto;
+  text-decoration: none;
+}
+
+.menu-content-container {
   display: flex;
-  flex-wrap: nowrap; /* 子要素を折り返さないように設定 */
-  justify-content: space-between; /* 子要素を横に均等に配置 */
+  align-items: center;
+  justify-content: center; /* 必要に応じて center 以外の値に調整 */
+  border: 1px solid #e8e7ed;
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.favorite-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
 }
 
 .menu-container {
-  width: calc(25% - 15px); /* 25%の幅で子要素を配置（15pxはpaddingの影響を考慮） */
+  margin-left: 10px; /* 例として左に余白を追加 */
+  color: black;
+  pointer-events: none;
+  text-decoration: none;
 }
 
-.menu-container {
-  display: flex;
-  flex-direction: column;
+.h4 {
 }
 
-.menu-name {
-  font-size: 1.9em;
-  color: brown;
-}
-
-.menu-material {
-  /* 材料に関するスタイルを追加 */
-}
-
-.menu-point {
-  background-color: rgb(209, 240, 209);
-}
+/* メニュー詳細画面 */

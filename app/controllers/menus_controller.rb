@@ -4,6 +4,8 @@ class MenusController < ApplicationController
   # GET /menus or /menus.json
   def index
     @menus = Menu.all
+    @q = Menu.ransack(params[:q])
+    @menus = @q.result(distinct: true).includes(:user).page(params[:page]).order("created_at desc")
   end
 
   # GET /menus/1 or /menus/1.json
@@ -21,7 +23,7 @@ class MenusController < ApplicationController
 
   # POST /menus or /menus.json
   def create
-    @menu = Menu.new(menu_params)
+    @menu = current_user.menus.new(menu_params)
 
       if @menu.save
         redirect_to menus_path, notice: "Menu was successfully created."

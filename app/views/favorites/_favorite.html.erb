@@ -1,0 +1,9 @@
+<% if current_user != menu.user %>
+  <div class="menu-favorite">
+  <% if menu.favorited_by(current_user).blank? %>
+    <%= link_to "お気に入りに保存", menu_favorites_path(menu), method: :post, class: "btn btn-success btn-sm" %>
+  <% else %>
+    <%= link_to "保存済み", menu_favorite_path(menu,menu.favorite_by(current_user)), method: :delete, class: "btn btn-outline-success btn-sm" %>
+  <% end %>
+  </div>
+<% end %>

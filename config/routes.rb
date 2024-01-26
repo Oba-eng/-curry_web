@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  resources :menus
-  resources :users
+  resources :menus do
+    resource :favorites, only: [:create, :destroy]
+  end
+
+  resources :users  do
+    get :favorites, on: :collection
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
 
   root 'menus#index'
