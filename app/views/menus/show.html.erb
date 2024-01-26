@@ -1,27 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <strong>メニュー名</strong>
+        <%= text_field_tag 'menu[name]', @menu.name, class: 'form-control' %>
+      </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
-</p>
+      <div class="card-body">
+        <strong>画像</strong>
+        <%= image_tag @menu.menu_image.url, class: 'form-control', style: 'width: 500px; height: 300px;' if @menu.menu_image.present? %>
+      </div>
 
-<p>
-  <strong>Material:</strong>
-  <%= @menu.material %>
-</p>
+      <div class="card-body">
+        <strong>材料</strong>
+        <%= text_field_tag 'menu[material]', @menu.material, class: 'form-control', rows: 5 %>
+      </div>
 
-<p>
-  <strong>Make:</strong>
-  <%= @menu.make %>
-</p>
+      <div class="card-body">
+        <strong>作り方</strong>
+        <%= text_field_tag 'menu[make]', @menu.make, class: 'form-control', rows: 5 %>
+      </div>
 
-<p>
-  <strong>Point:</strong>
-  <%= @menu.point %>
-</p>
+      <div class="card-body">
+        <strong>ポイント</strong>
+        <%= text_field_tag 'menu[point]', @menu.point, class: 'form-control', rows: 5 %>
+      </div>
+    </div>
+  </div>
 
-
-<%= link_to 'Destroy', @menu, method: :delete, data: { confirm: 'Are you sure?' } %>
-<!-- ↑ここまで一覧から引っ越しした↑ -->
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>
+    <% if current_user&.mine?(@menu) %>
+      <%= link_to 'Destroy', @menu, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_menu_path(@menu) %>
+    <% end %>
+    <%= link_to 'Back', menus_path %>
+</div>
