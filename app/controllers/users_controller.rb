@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @q = Menu.ransack(params[:q])
   end
 
   def create

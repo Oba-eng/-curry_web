@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-12 mb-3 text-center">
+<div class="col">
+  <div class="card h-100">
     <%= link_to menu_path(menu), class: 'menu-card' do %>
       <!-- 画像がある場合は以下のように表示 -->
       <div class="menu-content-container">
@@ -9,18 +9,24 @@
           <% else %>
             画像なし
           <% end %>
-        </div>      
-        <!-- ここに@menuの内容を表示するコードを追加 -->
-        <div class="menu-container">
-          <h4>メニュー名</h4>
-            <%= menu.name %>
-            <%= render 'favorites/favorite', menu: menu, class: 'favorite-button' %>
-          <h4>材料</h4>
-            <%= menu.material %>
-          <h4>ポイント</h4>
-            <%= menu.point %>
         </div>
       </div>
     <% end %>
+    <hr />
+      <!-- ここに@menuの内容を表示するコードを追加 -->
+      <div class="card-body">
+        <h4 class="card-title fw-bold">
+          <%= menu.name %>
+        </h4>
+        <p class="card-text"><%= menu.material %></p>
+        <p class="card-text"><%= menu.point %></p>
+        <hr />
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center gap-3">
+            <p class="card-text"><%= menu.user.name %></p>
+          </div>
+          <%= render 'favorites/favorite', menu: menu %>
+        </div>
+      </div>
   </div>
 </div>

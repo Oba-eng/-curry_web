@@ -1,36 +1,71 @@
 <div class="container">
   <div class="row">
-    <div class="card">
-      <div class="card-body">
-        <strong>メニュー名</strong>
-        <%= text_field_tag 'menu[name]', @menu.name, class: 'form-control' %>
-      </div>
+    <div class="col-12 col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h1>
+            <%= @menu.name %>
+          </h1>
+          <div>
+            <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+          </div>
 
-      <div class="card-body">
-        <strong>画像</strong>
-        <%= image_tag @menu.menu_image.url, class: 'form-control', style: 'width: 500px; height: 300px;' if @menu.menu_image.present? %>
-      </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="bi bi-info-circle"></i>
+              材料
+            </div>
+            <div class="card-body">
+              <%= simple_format @menu.material %>
+            </div>
+          </div>
 
-      <div class="card-body">
-        <strong>材料</strong>
-        <%= text_field_tag 'menu[material]', @menu.material, class: 'form-control', rows: 5 %>
-      </div>
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="bi bi-info-circle"></i>
+              作り方
+            </div>
+            <div class="card-body">
+              <%= simple_format @menu.make %>
+            </div>
+          </div>
 
-      <div class="card-body">
-        <strong>作り方</strong>
-        <%= text_field_tag 'menu[make]', @menu.make, class: 'form-control', rows: 5 %>
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="bi bi-info-circle"></i>
+              ポイント
+            </div>
+            <div class="card-body">
+              <%= simple_format @menu.point %>
+            </div>
+          </div>
+            
+          <% if current_user&.mine?(@menu) %>
+            <%= link_to 'Destroy', @menu, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_menu_path(@menu) %>
+          <% end %>
+          <%= link_to 'Back', menus_path %>
+        </div>
       </div>
+    </div>
 
-      <div class="card-body">
-        <strong>ポイント</strong>
-        <%= text_field_tag 'menu[point]', @menu.point, class: 'form-control', rows: 5 %>
+    <div class="col-12 col-md-4">
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="bi bi-person"></i>
+          メニュー作成者
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <%= @menu.user.name %>
+          </div>
+          <div class="p-3 bg-light">
+            メニュー作成
+            <%= @menu.user.menus.size %>
+            回
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-    <% if current_user&.mine?(@menu) %>
-      <%= link_to 'Destroy', @menu, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%= link_to 'Edit', edit_menu_path(@menu) %>
-    <% end %>
-    <%= link_to 'Back', menus_path %>
 </div>
