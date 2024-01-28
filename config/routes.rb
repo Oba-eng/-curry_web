@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'menus#index'
+
   resources :menus do
     resource :favorites, only: [:create, :destroy]
   end
@@ -8,8 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: [:new, :create, :destroy]
-
-  root 'menus#index'
 
   delete 'logout', to: 'sessions#destroy'
   get 'logout', to: 'sessions#destroy', as: :logout_get

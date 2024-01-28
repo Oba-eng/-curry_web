@@ -1,3 +1,4 @@
+/*
 .wrapKOPIPE-OK {
   padding: 60px;
   background: #f8f8f0;
@@ -34,11 +35,11 @@
 }
 
 /* ↓メニュー一覧に使用したcss↓ */
-
+/*
 .row {
   margin-bottom: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .card-body {
@@ -71,26 +72,34 @@
   display: flex;
   align-items: center;
   justify-content: center; /* 必要に応じて center 以外の値に調整 */
+  
+  /*
   border: 1px solid #e8e7ed;
   border-radius: 0.25rem;
   position: relative;
 }
-
-.favorite-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-}
-
+/*
 .menu-container {
   margin-left: 10px; /* 例として左に余白を追加 */
+
+  /*
   color: black;
   pointer-events: none;
   text-decoration: none;
 }
-
-.h4 {
+/*
+.menu-container h4 {
+color: rgb(184, 211, 157);
 }
+
+.menu-container h3 {
+color: rgb(157, 133, 75);
+}
+
+.menu-container h2 {
+  color: lightslategray;
+  font-weight: bold;
+}
+
 
 /* メニュー詳細画面 */
