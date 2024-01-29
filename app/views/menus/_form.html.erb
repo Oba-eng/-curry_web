@@ -1,4 +1,23 @@
-<%= form_with(model: menu, local: true) do |form| %>
+<%= form_with model: menu do |f| %>
+  <div class="mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :material %>
+    <%= f.text_area :material, class: 'form-control', rows: 8 %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :make %>
+    <%= f.text_area :make, class: 'form-control', rows: 8 %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :point %>
+    <%= f.text_area :point, class: 'form-control', rows: 8 %>
+  </div>
+
+
+
   <% if menu.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
@@ -10,48 +29,11 @@
     </div>
   <% end %>
 
-  <div class="d-flex">
-    <div class="form-name-image">
-      <div class="form-group">
-        <%= form.label :name %>
-        <%= form.text_field :name, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= form.label :menu_image %>
-        <%= form.file_field :menu_image, class: 'form-control mb-3 js-file-select-preview', accept: 'image/*', data: { target: '#menu-image-preview' } %>
-        <%= form.hidden_field :menu_image_cache %>
-      </div>
-
-      <div class='mt-3 mb-3'>
-        <% if menu.menu_image.present? %>
-          <%= image_tag menu.menu_image.url, id: 'menu-image-preview', size: '300x200' %>
-        <% else %>
-          <!-- 画像が存在しない場合の処理を追加 -->
-          <p>No Image Available</p>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="form-sride">
-      <div class="form-group">
-        <%= form.label :material %>
-        <%= form.text_field :material, class: 'form-control' %>
-      </div>
-    </div>
+  <div class="mb-3">
+    <%= f.label :menu_image %>
+    <%= f.file_field :menu_image, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
+    <%= image_tag f.object.decorate.thumbnail, id: 'preview-target', class: 'w-50 border' %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :make %>
-    <%= form.text_area :make, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :point %>
-    <%= form.text_area :point, class: 'form-control' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit '登録', class: 'btn btn-primary' %>
 <% end %>
