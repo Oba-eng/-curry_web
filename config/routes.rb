@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   root 'menus#index'
 
   resources :menus do
-    resource :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
   end
 
   resources :users  do
     get :favorites, on: :collection
+  end
+
+  namespace :mypage do
+    resources :tree, only: [:index]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

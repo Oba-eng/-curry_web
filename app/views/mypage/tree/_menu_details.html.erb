@@ -1,0 +1,23 @@
+<div class="col">
+  <div class="card h-100">
+    <% if menu.present? %>
+      <%= link_to menu_path(menu), class: 'menu-card' do %>
+        <h4 class="card-title fw-bold">
+          <%= menu.name %>
+        </h4>
+        <!-- 画像がある場合は以下のように表示 -->
+        <div class="menu-content-container">
+          <div class="menu-image">
+            <% if menu.menu_image.present? %>
+              <%= image_tag menu.menu_image.url, alt: 'Menu Image', class: 'tree-thumbnail' %>
+            <% else %>
+              画像なし
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>メニューを追加</p>
+    <% end %>
+  </div>
+</div>
