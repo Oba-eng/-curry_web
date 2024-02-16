@@ -1,3 +1,13 @@
+.tree-thumbnail {
+  height: 120px;
+  width: 240px;;
+}
+
+.custom-styling {
+  padding: 50px;
+  border-radius: 5px;
+}
+
 /*
 .wrapKOPIPE-OK {
   padding: 60px;

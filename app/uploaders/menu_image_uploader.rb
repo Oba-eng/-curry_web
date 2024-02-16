@@ -22,7 +22,7 @@ class MenuImageUploader < CarrierWave::Uploader::Base
   # end
 
   def default_url
-    'menu_placeholder.png'
+    'menu-default-image.png'
   end
 
   # Process files as they are uploaded:
@@ -47,4 +47,7 @@ class MenuImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def to_model
+    model || OpenStruct.new(id: nil)
+  end
 end

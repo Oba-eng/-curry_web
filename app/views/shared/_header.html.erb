@@ -19,6 +19,9 @@
 <%= render 'shared/search', q: @q, url: menus_path %>
   <% if current_user.present? %>
     <li class="nav-item">
+      <%= link_to 'マイカレー', mypage_tree_index_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
       <%= link_to '投稿一覧', menus_path, class: 'nav-link' %>
     </li>
     <li class="nav-item">

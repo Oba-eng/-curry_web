@@ -1,18 +1,18 @@
 <%= form_with model: menu do |f| %>
   <div class="mb-3">
-    <%= f.label :name %>
+    <%= f.label :メニュー名 %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="mb-3">
-    <%= f.label :material %>
+    <%= f.label :材料 %>
     <%= f.text_area :material, class: 'form-control', rows: 8 %>
   </div>
   <div class="mb-3">
-    <%= f.label :make %>
+    <%= f.label :作り方 %>
     <%= f.text_area :make, class: 'form-control', rows: 8 %>
   </div>
   <div class="mb-3">
-    <%= f.label :point %>
+    <%= f.label :ポイント %>
     <%= f.text_area :point, class: 'form-control', rows: 8 %>
   </div>
 
@@ -30,9 +30,9 @@
   <% end %>
 
   <div class="mb-3">
-    <%= f.label :menu_image %>
-    <%= f.file_field :menu_image, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
-    <%= image_tag f.object.decorate.thumbnail, id: 'preview-target', class: 'w-50 border' %>
+    <%= f.label :サムネイル %>
+    <%= f.file_field :thumbnail, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
+    <%= image_tag @menu.decorate.thumbnail, id: 'preview-target', class: 'w-50 border' %>
   </div>
 
   <%= f.submit '登録', class: 'btn btn-primary' %>

@@ -18,6 +18,8 @@ class MenusController < ApplicationController
   end
 
   def edit
+    @menu = Menu.find(params[:id])
+    @q = Menu.ransack(params[:q])
   end
 
   def create
@@ -25,7 +27,7 @@ class MenusController < ApplicationController
     @menu = current_user.menus.new(menu_params)
 
       if @menu.save
-        redirect_to menus_path, notice: "Menu was successfully created."
+        redirect_to menus_path, success: '保存しました'
       else
         render :new
       end
@@ -35,7 +37,7 @@ class MenusController < ApplicationController
     @q = Menu.ransack(params[:q])
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to menu_url(@menu), notice: "Menu was successfully updated." }
+        format.html { redirect_to menu_url(@menu), success: '更新しました' }
         format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -45,12 +47,9 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    @menu.destroy
-
-    respond_to do |format|
-      format.html { redirect_to menus_url, notice: "Menu was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    menu = Menu.find(params[:id])
+    menu.destroy
+    redirect_to menus_url, notice: '削除しました'
   end
 
   private

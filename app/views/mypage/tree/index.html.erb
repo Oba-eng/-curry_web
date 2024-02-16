@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/jsmind@0.8.1/style/jsmind.css" />
+    <script type="text/javascript" src="https://unpkg.com/jsmind@0.8.1/es6/jsmind.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/jsmind@0.8.1/es6/jsmind.draggable-node.js"></script>
+    <!-- 追加: jQueryを読み込む -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #jsmind_container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 600px;
+            width: 1000px;
+            background-color: red;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="jsmind_container"></div>
+
+    <script type="text/javascript">
+        function onNodeClick(node) {
+            // クリックされたノードの情報をサーバーに送信
+            var nodeId = node.id;
+            // ここでAjaxなどを使用してサーバーに情報を送信する
+            $.ajax({
+                url: '/menus/get_menu_details',
+                method: 'POST',
+                data: { node_id: nodeId },
+                success: function(response) {
+                    // サーバーからのレスポンスを処理
+                }
+            });
+        }
+
+        var mind = {
+            "meta": {
+                "name": "demo",
+                "author": '',
+            },
+            "format": "node_array",
+            "data": [
+                { "id": "root", "isroot": true, "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
+
+                { "id": "easy", "parentid": "root", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", "direction": "left", 'background-color': '#fff' },
+                { "id": "easy2", "parentid": "easy", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
+                { "id": "easy3", "parentid": "easy", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
+                { "id": "easy4", "parentid": "easy", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
+
+            ]
+        };
+        var options = {
+            container: 'jsmind_container',
+            editable: true,
+            theme: 'orange',
+            // 追加: ノードがクリックされた時に呼び出されるコールバック
+            onclick: onNodeClick
+        };
+        var jm = new jsMind(options);
+        jm.show(mind);
+    </script>
+</body>
+
+</html>
