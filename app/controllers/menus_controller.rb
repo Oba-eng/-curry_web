@@ -52,6 +52,11 @@ class MenusController < ApplicationController
     redirect_to menus_url, notice: '削除しました'
   end
 
+  def favorites
+    @favorites_menus = current_user.favorite_menus.includes(:user).order(created_at: :desc)#後で定義する
+  end
+  
+
   private
     def set_menu
       @menu = Menu.find(params[:id])

@@ -2,24 +2,15 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @favorite = current_user.favorites.build(favorite_params)
-    @menu = @favorite.menu
-    if @favorite.valid?
-      @favorite.save
-      redirect_to menu_path(@menu)
-    end
+    menu = Menu.find(params[:menu_id])
+    current_user.favorite(menu)
+    redirect_back fallback_location: root_path, success: t('defaults.message.bookmark')
   end
 
   def destroy
-    @favorite = Favorite.find(params[:id])
-    @menu = @favorite.menu
-    if @favorite.destroy
-      redirect_to menu_path(@menu)
-    end
+    menu = current_user.favorites.find(params[:id]).menu
+    current_user.unfavorite(menu)
+    redirect_back fallback_location: root_path, success: t('defaults.message.unbookmark')
   end
 
-  private
-  def favorite_params
-    params.permit(:menu_id)
-  end
 end

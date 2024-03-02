@@ -25,7 +25,13 @@
           <div class="d-flex align-items-center gap-3">
             <p class="card-text"><%= menu.user.name %></p>
           </div>
-          <%= render 'favorites/favorite', menu: menu %>
+
+          <% if current_user.own?(menu) %>
+            <%= render 'favorite_button', menu: menu %>
+          <% else %>
+            <%= render 'favorite_button', menu: menu %>
+          <% end %>
+
         </div>
       </div>
   </div>
