@@ -5,9 +5,17 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  resources :users  do
-    get :favorites, on: :collection
-  end
+  #resources :users  do
+    #get :favorites, on: :collection
+  #end
+
+  resources :users
+    resources :menus do
+      collection do 
+        get :favorites 
+      end
+    end
+    resources :favorites, only: %i[create destroy]
 
   namespace :mypage do
     resources :tree, only: [:index]
