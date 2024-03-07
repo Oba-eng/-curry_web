@@ -5,10 +5,6 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  #resources :users  do
-    #get :favorites, on: :collection
-  #end
-
   resources :users
     resources :menus do
       collection do 

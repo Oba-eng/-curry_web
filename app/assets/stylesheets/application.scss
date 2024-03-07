@@ -18,6 +18,17 @@
   color: rgba(53, 49, 49, 0.303);
   background-color: transparent;
 }
+
+/* アクティブな状態（通常時） */
+.btn.btn-primary {
+  color: #fff !important; /* !importantを追加して強制的に適用 */
+}
+
+/* ホバー時 */
+.btn.btn-primary:hover {
+  color: #fff !important; /* !importantを追加して強制的に適用 */
+}
+
 @import "custom_styles";
 @import 'bootstrap';
 @import 'font-awesome';

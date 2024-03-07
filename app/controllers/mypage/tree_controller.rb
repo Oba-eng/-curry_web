@@ -3,7 +3,7 @@ class Mypage::TreeController < ApplicationController
   def index
     @q = Menu.ransack(params[:q])
 
-    # @menu = Menu.find(7)
+    @menu = Menu.find(7)
 
     respond_to do |format|
       format.html

@@ -53,7 +53,7 @@ class MenusController < ApplicationController
   end
 
   def favorites
-    @favorites_menus = current_user.favorite_menus.includes(:user).order(created_at: :desc)#後で定義する
+    @favorites_menus = current_user.favorite_menus.includes(:user).order(created_at: :desc)
   end
   
 

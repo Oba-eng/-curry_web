@@ -41,10 +41,10 @@
           </div>
             
           <% if current_user&.own?(@menu) %>
-            <%= link_to '削除', menu_path(@menu.id),method: :delete, "data-confirm"=>"本当に消しますか？" %>
-            <%= link_to '編集', edit_menu_path(@menu) %>
+            <%= link_to '削除', menu_path(@menu.id), method: :delete, class: 'btn btn-primary ml-2', data: { confirm: '本当に削除しますか？' } %>
+            <%= link_to '編集', edit_menu_path(@menu), class: 'btn btn-primary ml-2' %>
           <% end %>
-          <%= link_to '戻る', menus_path %>
+          <%= link_to '戻る', menus_path, class: 'btn btn-primary ml-2' %>
         </div>
       </div>
     </div>
