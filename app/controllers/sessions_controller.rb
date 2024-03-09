@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
 
   def create
     @q = Menu.ransack(params[:q])
-    user = User.find_by(email: params[:email])
-    if user&.authenticate(params[:password])
-      session[:user_id] = user.id
+    @user = login(params[:email], params[:password])
+
+    if @user
       redirect_to menus_path, success: 'ログインしました'
     else
       flash.now[:danger] = 'ログインに失敗しました'

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   validates :email, uniqueness: true, presence: true
+  authenticates_with_sorcery!
 
   has_many :menus
 
@@ -24,6 +25,10 @@ class User < ApplicationRecord
 
   def favorite?(menu)
     favorite_menus.include?(menu)
+  end
+
+  def password_digest
+    crypted_password
   end
 
 end
