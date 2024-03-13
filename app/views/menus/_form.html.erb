@@ -31,8 +31,10 @@
 
   <div class="mb-3">
     <%= f.label :サムネイル %>
-    <%= f.file_field :thumbnail, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
-    <%= image_tag @menu.decorate.thumbnail, id: 'preview-target', class: 'w-50 border' %>
+    <!-- 画像を添付するためのコード↓ -->
+    <%= f.file_field :menu_image, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
+    <!-- プレビューを表示するコード↓ -->
+    <%= image_tag @menu.decorate.menu_image, id: 'preview-target', class: 'w-50 border' %>
   </div>
   <%= link_to '戻る', menus_path, class: 'btn btn-primary ml-2' %>
   <%= f.submit '登録', class: 'btn btn-primary' %>
