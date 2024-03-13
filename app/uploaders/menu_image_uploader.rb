@@ -26,6 +26,7 @@ class MenuImageUploader < CarrierWave::Uploader::Base
   def default_url
     'menu-default-image.png'
   end
+  
 
   # Process files as they are uploaded:
   #
