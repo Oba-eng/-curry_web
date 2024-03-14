@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
   root 'menus#index'
 
-  resources :menus do
-    resources :favorites, only: [:create, :destroy]
+  resources :users do
+    resources :menus
   end
-
-  resources :users
-    resources :menus do
-      collection do 
-        get :favorites 
-      end
+  
+  resources :menus do
+    member do
+      delete :favorite, to: 'favorites#destroy'
+      post :favorite, to: 'favorites#create'
     end
-    resources :favorites, only: %i[create destroy]
+  end
 
   namespace :mypage do
     resources :tree, only: [:index]
@@ -36,5 +35,4 @@ Rails.application.routes.draw do
       end
     end
   end
-
 end
