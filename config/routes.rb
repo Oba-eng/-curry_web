@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   
   resources :menus do
     member do
-      delete :favorite, to: 'favorites#destroy'
       post :favorite, to: 'favorites#create'
     end
+  end
+
+  resources :menus do
+    resource :favorite, only: [:destroy]
   end
 
   namespace :mypage do

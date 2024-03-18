@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    menu = current_user.favorites.find(params[:id])
+    menu = current_user.favorite_menus.find(params[:menu_id])
     current_user.unfavorite(menu)
     redirect_back fallback_location: root_path, success: t('defaults.message.unbookmark')
   end
