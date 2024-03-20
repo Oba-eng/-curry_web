@@ -16,8 +16,6 @@
     <%= f.text_area :point, class: 'form-control', rows: 8 %>
   </div>
 
-
-
   <% if menu.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(menu.errors.count, "error") %> prohibited this menu from being saved:</h2>
@@ -31,11 +29,10 @@
 
   <div class="mb-3">
     <%= f.label :サムネイル %>
-    <!-- 画像を添付するためのコード↓ -->
-    <%= f.file_field :menu_image, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
-    <!-- プレビューを表示するコード↓ -->
-    <%= image_tag @menu.decorate.menu_image, id: 'preview-target', class: 'w-50 border' %>
+    <%= f.file_field :menu_image, class: 'form-control', accept: 'image/*', onchange: 'previewImage(preview)' %>
+    <%= image_tag menu.menu_image.url, id: 'preview', class: 'w-50 border' %>
   </div>
   <%= link_to '戻る', menus_path, class: 'btn btn-primary ml-2' %>
   <%= f.submit '登録', class: 'btn btn-primary' %>
+
 <% end %>
