@@ -2,6 +2,7 @@ import Rails from "@rails/ujs";
 Rails.start();
 import Turbolinks from "turbolinks";
 Turbolinks.start();
+require('jquery')
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
