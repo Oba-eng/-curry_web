@@ -71,4 +71,10 @@ gem 'ransack', '>= 2.5.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'draper'
 gem 'font-awesome-sass', '~> 5.15'
+gem 'devise'
+
+#↓メール関係
+gem 'dotenv-rails'
+gem 'net-smtp'
+
 #gem 'polyamorous', '>= 2.3.1'
