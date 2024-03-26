@@ -76,5 +76,4 @@ gem 'devise'
 #↓メール関係
 gem 'dotenv-rails'
 gem 'net-smtp'
-
 #gem 'polyamorous', '>= 2.3.1'
