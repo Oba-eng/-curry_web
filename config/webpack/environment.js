@@ -2,8 +2,8 @@ const { environment } = require('@rails/webpacker');
 const webpack = require('webpack');
 
 // エントリーポイントの設定
-environment.entry.prepend('application', './app/assets/javascripts/packs/application.js');
-environment.entry.prepend('application', './app/assets/javascripts/application.js');
+environment.entry.prependJs('application', './app/assets/javascripts/packs/application.js');
+environment.entry.prependJs('application', './app/assets/javascripts/application.js');
 
 // jQueryのプラグインを追加
 environment.plugins.prepend('Provide',
