@@ -62,7 +62,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'sorcery'
 gem 'pry-byebug'
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '6.0.0.rc.6'
 gem 'bootstrap'
 gem 'sassc-rails'
 gem 'carrierwave', '~> 2.0'
