@@ -3,8 +3,8 @@ const webpack = require('webpack');
 
 // エントリーポイントの設定
 environment.entryPoints
-  .set('application', './app/assets/javascripts/packs/application.js')
-  .set('application', './app/assets/javascripts/application.js');
+  .prepend('application', './app/assets/javascripts/packs/application.js')
+  .prepend('application', './app/assets/javascripts/application.js');
 
 // jQueryのプラグインを追加
 environment.plugins.prepend('Provide',
