@@ -72,6 +72,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'draper'
 gem 'font-awesome-sass', '~> 5.15'
 gem 'devise'
+gem 'pg'
 
 #↓メール関係
 gem 'dotenv-rails'
