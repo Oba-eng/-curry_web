@@ -1,3 +1,5 @@
+# config/webpacker.yml
+
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
@@ -46,6 +48,16 @@ default: &default
     - .gif
     - .jpeg
     - .jpg
+
+  module:
+    rules:
+      - test: /\.m?jsx?$/
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
 
 development:
   <<: *default
