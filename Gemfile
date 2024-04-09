@@ -12,7 +12,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.1.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'terser'
+gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
@@ -77,3 +77,4 @@ gem 'dotenv-rails'
 gem 'net-smtp'
 #gem 'polyamorous', '>= 2.3.1'
 gem 'pg'
+gem 'terser'
