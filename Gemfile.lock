@@ -187,6 +187,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.16.2-x86_64-linux)
+      racc (~> 1.4)
     oauth (1.1.0)
       oauth-tty (~> 1.0, >= 1.0.1)
       snaky_hash (~> 2.0)
@@ -306,6 +308,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.7.2-aarch64-linux)
     sqlite3 (1.7.2-arm64-darwin)
+    sqlite3 (1.7.2-x86_64-linux)
     ssrf_filter (1.1.2)
     terser (1.2.2)
       execjs (>= 0.3.0, < 3)
@@ -340,6 +343,7 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
@@ -380,4 +384,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.5.7
+   2.4.21
