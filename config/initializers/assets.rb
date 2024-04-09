@@ -11,8 +11,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-<<<<<<< HEAD
 Rails.application.config.assets.precompile += %w( menus.js )
-=======
-Rails.application.config.assets.precompile += %w( menus.js )
->>>>>>> 83e0d6d1c78c5d777d3221b642c73b97b0a49e16
