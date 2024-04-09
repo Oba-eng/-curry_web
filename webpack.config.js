@@ -1,6 +1,8 @@
 module.exports = {
-  entry: './app/javascript/packs/application.js', // あるいは他の適切なエントリーポイントへのパス
-  // ... 他の設定オプション ...
+  entry: {
+    application: './app/javascript/packs/application.js',
+    menus: './app/javascript/packs/menus.js',
+  },
   module: {
     rules: [
       {
