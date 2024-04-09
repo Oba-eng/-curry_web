@@ -33,11 +33,9 @@ ActiveRecord::Schema.define(version: 2024_03_08_103038) do
     t.string "material", null: false
     t.text "make", null: false
     t.text "point", null: false
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "menu_image"
-    t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,5 +56,4 @@ ActiveRecord::Schema.define(version: 2024_03_08_103038) do
 
   add_foreign_key "favorites", "menus"
   add_foreign_key "favorites", "users"
-  add_foreign_key "menus", "users"
 end
