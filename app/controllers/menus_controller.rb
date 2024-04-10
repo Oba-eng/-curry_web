@@ -23,7 +23,6 @@ class MenusController < ApplicationController
   end
 
   def create
-    binding.pry
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
 
