@@ -1,5 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # -curry_web
+=======
 =======
 # README
 
@@ -25,4 +27,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+<<<<<<< HEAD
 >>>>>>> fbf5ba0 (アプリケーションの雛形作成)
+=======
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871

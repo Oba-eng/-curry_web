@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+<<<<<<< HEAD
 ruby '3.0.2'
+=======
+
+ruby '3.0.2'
+
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '6.1.4'
 # Use sqlite3 as the database for Active Record
@@ -23,10 +29,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
@@ -61,6 +70,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'draper'
 gem 'font-awesome-sass', '~> 5.15'
 gem 'devise'
+gem 'pg'
 #↓メール関係
 gem 'dotenv-rails'
 gem 'net-smtp'
