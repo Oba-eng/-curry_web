@@ -1,5 +1,3 @@
-# config/webpacker.yml
-
 # Note: You must restart bin/webpack-dev-server for changes to take effect
 
 default: &default
@@ -49,16 +47,6 @@ default: &default
     - .jpeg
     - .jpg
 
-  module:
-    rules:
-      - test: /\.m?jsx?$/
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-
 development:
   <<: *default
   compile: true
@@ -102,4 +90,3 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
-

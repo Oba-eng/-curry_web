@@ -183,6 +183,11 @@ GEM
     net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
+<<<<<<< HEAD
+    nokogiri (1.16.2-aarch64-linux)
+      racc (~> 1.4)
+=======
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
     nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.2-x86_64-linux)
@@ -213,8 +218,11 @@ GEM
     puma (3.12.6)
     racc (1.7.3)
     rack (2.2.8.1)
+<<<<<<< HEAD
+=======
     rack-proxy (0.7.7)
       rack
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (6.1.4)
@@ -288,7 +296,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+<<<<<<< HEAD
+=======
     semantic_range (3.0.0)
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -307,6 +318,10 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+<<<<<<< HEAD
+    sqlite3 (1.7.2-aarch64-linux)
+=======
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
     sqlite3 (1.7.2-arm64-darwin)
     sqlite3 (1.7.2-x86_64-linux)
     ssrf_filter (1.1.2)
@@ -320,6 +335,11 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+<<<<<<< HEAD
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
+=======
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
     uri (0.13.0)
     version_gem (1.1.3)
     warden (1.2.9)
@@ -329,11 +349,14 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+<<<<<<< HEAD
+=======
     webpacker (5.4.4)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
     websocket (1.2.10)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -344,6 +367,10 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
+<<<<<<< HEAD
+  aarch64-linux
+=======
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
   arm64-darwin-22
   x86_64-linux
 
@@ -378,8 +405,13 @@ DEPENDENCIES
   terser
   turbolinks (~> 5)
   tzinfo-data
+<<<<<<< HEAD
+  uglifier (>= 1.3.0)
+  web-console (>= 3.3.0)
+=======
   web-console (>= 3.3.0)
   webpacker (~> 5.0)
+>>>>>>> ff236c86f2548dbffafa85108e82e96198726871
   will_paginate (~> 3.1.0)
 
 RUBY VERSION
