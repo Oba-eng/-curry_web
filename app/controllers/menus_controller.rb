@@ -23,6 +23,7 @@ class MenusController < ApplicationController
   end
 
   def create
+    binding.pry
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
 
@@ -63,6 +64,6 @@ class MenusController < ApplicationController
     end
 
     def menu_params
-      params.require(:menu).permit(:name, :material, :make, :point, :menu_image, :menu_image_cache, :menu)
+      params.require(:menu).permit(:name, :material, :make, :point, :menu_image, :menu_image_cache)
     end
 end

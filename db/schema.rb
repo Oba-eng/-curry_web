@@ -53,4 +53,5 @@ ActiveRecord::Schema.define(version: 2024_04_10_125007) do
 
   add_foreign_key "favorites", "menus"
   add_foreign_key "favorites", "users"
+  add_foreign_key "menus", "users"
 end
