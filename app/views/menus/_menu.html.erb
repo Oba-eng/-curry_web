@@ -23,7 +23,11 @@
         <hr />
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center gap-3">
-            <p class="card-text"><%= menu.user.name %></p>
+            <% if menu.user.present? %>
+              <p class="card-text"><%= menu.user.name %></p>
+            <% else %>
+              <p class="card-text">Unknown User</p>
+            <% end %>
           </div>
 
           <% if current_user && current_user.own?(menu) %>
