@@ -6,6 +6,7 @@ class CreateMenus < ActiveRecord::Migration[6.1]
       t.text :make, null: false
       t.text :point, null: false
 	    t.text :menu_image
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
