@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration[5.2]
+class CreateUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :users do |t|
       t.string :name, null: false
@@ -6,9 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :crypted_password
       t.string :salt
       t.string :menu_image
-
+      
       t.timestamps
     end
-    add_index :users, :email, unique: true
   end
 end

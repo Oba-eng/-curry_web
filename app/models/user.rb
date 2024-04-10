@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   # お気に入り機能
   has_many :favorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :favorite_menus, through: :favorites, source: :menu
+
 
   def own?(object)
     id == object.user_id
@@ -25,8 +27,8 @@ class User < ApplicationRecord
     favorite_menus.include?(menu)
   end
 
-  def encrypted_password=(new_password)
-    self.password_digest = BCrypt::Password.create(new_password)
+  def password_digest
+    crypted_password
   end
 
 end
