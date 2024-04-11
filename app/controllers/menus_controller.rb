@@ -49,7 +49,7 @@ class MenusController < ApplicationController
   def destroy
     menu = Menu.find(params[:id])
     menu.destroy
-    redirect_to menus_url, notice: '削除しました'
+    redirect_to menus_url, success: '削除しました'
   end
 
   def favorites
