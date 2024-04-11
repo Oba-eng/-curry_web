@@ -1,5 +1,6 @@
+console.log('ページが完全に読み込まれました');
+
 $(function () {
-  console.log('ページが完全に読み込まれました');
 
   window.previewImage = function(input) {
     if (input.files && input.files[0]) {
