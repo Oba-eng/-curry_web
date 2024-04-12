@@ -371,6 +371,7 @@ DEPENDENCIES
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets-rails
   sqlite3
   terser
   turbolinks (~> 5)
