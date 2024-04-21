@@ -72,7 +72,6 @@ gem 'draper'
 gem 'font-awesome-sass', '~> 5.15'
 gem 'devise'
 gem 'pg'
-gem 'jquery-rails'
 gem 'sprockets-rails'
 
 #↓メール関係
