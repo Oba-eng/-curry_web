@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/jsmind@0.8.1/style/jsmind.css" />
-    <script type="text/javascript" src="https://unpkg.com/jsmind@0.8.1/es6/jsmind.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/jsmind@0.8.1/es6/jsmind.draggable-node.js"></script>
-    <!-- 追加: jQueryを読み込む -->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -37,44 +31,41 @@
 
 <body>
     <div id="jsmind_container"></div>
-
     <script type="text/javascript">
-        function onNodeClick(node) {
-            // クリックされたノードの情報をサーバーに送信
-            var nodeId = node.id;
-            // ここでAjaxなどを使用してサーバーに情報を送信する
-            $.ajax({
-                url: '/menus/get_menu_details',
-                method: 'POST',
-                data: { node_id: nodeId },
-                success: function(response) {
-                    // サーバーからのレスポンスを処理
-                }
-            });
-        }
 
-        var mind = {
-            "meta": {
-                "name": "demo",
-                "author": '',
-            },
-            "format": "node_array",
-            "data": [
-                { "id": "root", "isroot": true, "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
+    var mind = {
+        "meta": {
+            "name": "demo",
+            "author": ''
+        },
+        "format": "node_array",
+        "data": [
+            {"id":"root", "isroot":true, "topic":"jsMind", "direction":"left"},
+            
+            {"id":"easy", "parentid":"root", "topic":"Easy", "direction":"right"},
+            {"id":"easy1", "parentid":"easy", "topic":"Easy to show"},
+            {"id":"easy2", "parentid":"easy", "topic":"Easy to edit"},
+        
 
-                { "id": "easy", "parentid": "root", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", "direction": "left", 'background-color': '#fff' },
-                { "id": "easy2", "parentid": "easy", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
-                { "id": "easy3", "parentid": "easy", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
-                { "id": "easy4", "parentid": "easy", "topic": "<a href='http://localhost:3000/menus/new'><%= j(render 'menu_details', menu: @menu) %></a>", 'background-color': '#fff' },
+            {"id":"open", "parentid":"root", "topic":"Open Source", "direction":"right"},
+            {"id":"open1", "parentid":"open", "topic":"on GitHub"},
+            {"id":"open2", "parentid":"open", "topic":"BSD License"},
 
-            ]
-        };
+            {"id":"powerful", "parentid":"root", "topic":"Powerful", "direction":"right"},
+            {"id":"powerful1", "parentid":"powerful", "topic":"Base on Javascript"},
+            {"id":"powerful3", "parentid":"powerful", "topic":"Depends on you"},
+
+            {"id":"test", "parentid":"root", "topic":"Test Node", "direction":"right"},
+            {"id":"test1", "parentid":"test", "topic":"I'm from local variable"},
+            {"id":"test2", "parentid":"test", "topic":"I can do everything"}
+        ]
+    };
         var options = {
             container: 'jsmind_container',
             editable: true,
             theme: 'orange',
-            // 追加: ノードがクリックされた時に呼び出されるコールバック
-            onclick: onNodeClick
+            mode :'full',
+
         };
         var jm = new jsMind(options);
         jm.show(mind);
