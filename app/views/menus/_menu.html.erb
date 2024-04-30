@@ -31,9 +31,9 @@
           </div>
 
           <% if current_user && current_user.own?(menu) %>
-            <%= render 'favorite_button', menu: menu %>
+            <%= render 'menus/favorite_button', menu: menu %>
           <% else %>
-            <%= render 'favorite_button', menu: menu %>
+            <%= render 'menus/favorite_button', menu: menu %>
           <% end %>
 
         </div>

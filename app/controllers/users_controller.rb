@@ -18,11 +18,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @menus = @user.menus
-
-    favorites = Favorite.where(user_id: current_user.id).pluck(:menu_id)  # ログイン中のユーザーのお気に入りのpost_idカラムを取得
-    @favorite_list = Menu.find(favorites)     # menusテーブルから、お気に入り登録済みのレコードを取得
+    @q = Menu.ransack(params[:q])
+    @name = current_user.name
+    @menus = current_user.menus
+    
   end
     
   private

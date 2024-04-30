@@ -9,7 +9,7 @@
 
 
     <% if current_user.present? %>
-      <%= current_user.name %>
+      <%= link_to current_user.name, "/users/#{current_user.id}", class: 'nav-link' %>
     <% else %>
       ゲスト
     <% end %>

@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center mb-4 mt-4">マイページ</h1> <!-- マイページというテキストを中央揃えに配置 -->
+    </div>
+      <div class="col-12 col-md-8">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="bi bi-layout-text-sidebar-reverse"></i>
+            <%= @name %>さんの投稿一覧
+          </div>
+          <table>
+            <div class="card-body">
+              <tbody>
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+                      <%= render partial: 'menus/menu', collection: @menus %>
+                    </div>
+                </div>
+              </tbody>
+            </div>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="bi bi-person"></i>
+            ユーザー情報
+          </div>
+          <div class="card-body">
+            <div class="p-3 bg-light">
+              メニュー作成
+              <%= @menus.size %>
+              回
+            </div>
+            <div class="p-3">
+              ユーザー情報変更
+              <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="p-3">
+              パスワード変更
+              <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="p-3">
+              退会する
+              <i class="bi bi-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
