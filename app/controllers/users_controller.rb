@@ -21,9 +21,15 @@ class UsersController < ApplicationController
     @q = Menu.ransack(params[:q])
     @name = current_user.name
     @menus = current_user.menus
-    
   end
-    
+
+  def destroy
+    @user = current_user
+    @user.destroy
+    flash[:notice] = 'ユーザーを削除しました。'
+    redirect_to :root #削除に成功すればrootページに戻る
+  end
+
   private
 
   def user_params

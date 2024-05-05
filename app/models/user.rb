@@ -3,11 +3,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   authenticates_with_sorcery!
 
-  has_many :menus
+  has_many :menus, :dependent => :destroy
 
   # お気に入り機能
-  has_many :favorites, dependent: :destroy
-  has_many :favorites, dependent: :destroy
+  has_many :favorites, :dependent => :destroy
   has_many :favorite_menus, through: :favorites, source: :menu
 
 
