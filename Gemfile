@@ -73,6 +73,7 @@ gem 'font-awesome-sass', '~> 5.15'
 gem 'devise'
 gem 'pg'
 gem 'sprockets-rails'
+gem 'rinku'
 
 #↓メール関係
 gem 'dotenv-rails'

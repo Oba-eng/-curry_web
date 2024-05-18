@@ -29,6 +29,40 @@
   color: #fff !important; /* !importantを追加して強制的に適用 */
 }
 
+#name_field {
+  background-color: #FFA500; /* 暖かいオレンジ色 */
+  border: 1px solid #000000; /* 枠線を設定 */
+}
+
+#name_field:focus {
+  border-color: #008cff; /* フォーカス時の枠線色をオレンジ色に設定 */
+  box-shadow: 0 0 3px 1px #008cff; /* オレンジ色の影を追加 */
+}
+
+#input {
+  display: block;
+  margin-top: 10px;
+}
+
+/* ボタン全体に適用するスタイル */
+#form_area button {
+  border: none; /* ボーダーをなくす */
+  background: none; /* 背景を透明にする */
+  cursor: pointer; /* カーソルをポインターに変更 */
+  padding: 0; /* パディングをなくす */
+  font-size: 16px; /* ボタンのテキストサイズを設定 */
+}
+
+/* マウスオーバー時のスタイル */
+#form_area button:hover {
+  text-decoration: underline; /* マウスオーバー時に下線を表示 */
+}
+
+/* ボタン内のテキスト（"×"）のマウスオーバー時のスタイル */
+#form_area button:hover::before {
+  color: red; /* マウスオーバー時のテキストの色を変更 */
+}
+
 @import "custom_styles";
 @import 'bootstrap';
 @import 'font-awesome';

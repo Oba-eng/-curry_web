@@ -16,7 +16,7 @@
               材料
             </div>
             <div class="card-body">
-              <%= simple_format @menu.material %>
+              <%= Rinku.auto_link(simple_format(@menu.material), :all, 'target="_blank"').html_safe %>
             </div>
           </div>
 
@@ -26,7 +26,7 @@
               作り方
             </div>
             <div class="card-body">
-              <%= simple_format @menu.make %>
+              <%= Rinku.auto_link(simple_format(@menu.make), :all, 'target="_blank"').html_safe %>
             </div>
           </div>
 
@@ -36,7 +36,7 @@
               ポイント
             </div>
             <div class="card-body">
-              <%= simple_format @menu.point %>
+              <%= Rinku.auto_link(simple_format(@menu.point), :all, 'target="_blank"').html_safe %>
             </div>
           </div>
             

@@ -25,12 +25,17 @@ class MenusController < ApplicationController
   def create
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-
-      if @menu.save
-        redirect_to menus_path, success: '保存しました'
-      else
-        render :new
-      end
+    
+    if params[:back].present?
+      render :new
+      return
+    end
+  
+    if @menu.save
+      redirect_to menus_path, success: '保存しました'
+    else
+      render :new
+    end
   end
 
   def update
@@ -54,6 +59,12 @@ class MenusController < ApplicationController
 
   def favorites
     @favorites_menus = current_user.favorite_menus.includes(:user).order(created_at: :desc)
+  end
+
+  def confirm_new
+    @q = Menu.ransack(params[:q])
+    @menu = current_user.menus.new(menu_params)
+    render :new unless @menu.valid?
   end
   
 

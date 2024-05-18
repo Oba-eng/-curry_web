@@ -9,10 +9,12 @@ Rails.application.routes.draw do
     member do
       post :favorite, to: 'favorites#create'
     end
-  end
 
-  resources :menus do
     resource :favorite, only: [:destroy]
+
+    collection do
+      post :confirm, action: :confirm_new
+    end
   end
 
   namespace :mypage do

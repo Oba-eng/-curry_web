@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <div class="card">
+        <%= form_with model: @menu, local: true do |f| %>
+          <div class="card-body">
+            <h1>
+              <%= @menu.name %>
+            </h1>
+            <div>
+              <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+            </div>
+
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="bi bi-info-circle"></i>
+                材料
+              </div>
+              <div class="card-body">
+                <%= Rinku.auto_link(simple_format(@menu.material), :all, 'target="_blank"').html_safe %>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="bi bi-info-circle"></i>
+                作り方
+              </div>
+              <div class="card-body">
+                <%= Rinku.auto_link(simple_format(@menu.make), :all, 'target="_blank"').html_safe %>
+              </div>
+            </div>
+
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="bi bi-info-circle"></i>
+                ポイント
+              </div>
+              <div class="card-body">
+                <%= Rinku.auto_link(simple_format(@menu.point), :all, 'target="_blank"').html_safe %>
+              </div>
+            </div>
+              
+            <% if current_user&.own?(@menu) %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :material %>
+              <%= f.hidden_field :make %>
+              <%= f.hidden_field :point %>
+              <%= f.hidden_field :menu_image_cache %>
+              <%= f.submit '戻る', name: 'back', class: 'btn btn-primary ml-2' %>
+            <% end %>
+            <%= f.submit '公開する', class: 'btn btn-primary ml-2' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

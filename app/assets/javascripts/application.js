@@ -14,5 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require bootstrap
+//= require form
 
 console.log("読み込み");

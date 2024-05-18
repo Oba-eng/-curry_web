@@ -1,14 +1,30 @@
 <%= javascript_include_tag 'menus' %>
 
-<%= form_with model: menu do |f| %>
+<%= form_with model: @menu, url: confirm_menus_path, local: true do |f| %>
   <div class="mb-3">
     <%= f.label :メニュー名 %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control', id: 'name_field' %>
   </div>
-  <div class="mb-3">
-    <%= f.label :材料 %>
-    <%= f.text_area :material, class: 'form-control', rows: 8 %>
+
+  <div class="form-row d-flex">
+  <div class="flex-grow-1">
+    <div class="menu-image-prev" onclick="document.getElementById('menu_image_field').click();">
+      <% if f.object.menu_image.present? %>
+        <%= image_tag f.object.menu_image.thumb.url, alt: "menu-image", id: "img_prev", class: "img-thumbnail", size: "300x105" %>
+      <% else %>
+        <%= image_tag "menu-default-image.png", alt: "menu-image", id: :img_prev, class: "img-thumbnail", size: "300x105" %>
+      <% end %>
+      <%= f.file_field :menu_image, id: "menu_image_field", class: "hidden", accept: "image/*", onchange: "previewImage(this);", style: "display:none;" %>
+    </div>
   </div>
+  <div class="flex-grow-1">
+    <div class="mb-3">
+      <%= f.label :材料 %>
+      <%= f.text_area :material, class: 'form-control', rows: 8 %>
+    </div>
+  </div>
+</div>
+
   <div class="mb-3">
     <%= f.label :作り方 %>
     <%= f.text_area :make, class: 'form-control', rows: 8 %>
@@ -29,20 +45,6 @@
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= f.label :サムネイル %>
-    <%= f.file_field :menu_image, class: 'form-control', accept: 'image/*', onchange: "previewImage(this);" %>
-  </div>
-
-  <div class="menu-image-prev">
-    <% if f.object.menu_image.present? %>
-      <%= image_tag f.object.menu_image.thumb.url, alt: "menu-image", id: "img_prev", size: "300x105" %>
-    <% else %>
-      <%= image_tag "menu-default-image.png", alt: "menu-image", id: :img_prev, size: "300x105" %>
-    <% end %>
-  </div>
-
-  <%= link_to '戻る', menus_path, class: 'btn btn-primary ml-2' %>
-  <%= f.submit '登録', class: 'btn btn-primary' %>
+  <%= f.submit '確認画面へ', class: 'btn btn-primary' %>
 
 <% end %>
