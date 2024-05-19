@@ -44,6 +44,13 @@ class UsersController < ApplicationController
     redirect_to :root #削除に成功すればrootページに戻る
   end
 
+  def favorites 
+    @q = Menu.ransack(params[:q])
+    @user = current_user
+    favorites = Favorite.where(user_id: @user.id).pluck(:menu_id)
+    @favorite_menus = Menu.find(favorites)
+  end
+
   private
 
   def user_params

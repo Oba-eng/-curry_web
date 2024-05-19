@@ -1,0 +1,12 @@
+<table>
+  <div class="card-body">
+    <tbody>
+      <div class="container">
+      <h1>いいね一覧</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+          <%= render partial: 'menus/menu', collection: @favorite_menus, as: :menu %>
+        </div>
+      </div>
+    </tbody>
+  </div>
+</table>
