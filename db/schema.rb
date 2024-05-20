@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2024_05_20_014130) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 2024_05_20_014130) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "menu_id"
+    t.bigint "user_id"
+    t.bigint "menu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["menu_id"], name: "index_favorites_on_menu_id"
@@ -32,11 +35,12 @@ ActiveRecord::Schema.define(version: 2024_05_20_014130) do
 
   create_table "menus", force: :cascade do |t|
     t.string "name", null: false
-    t.string "material", null: false
-    t.text "make", null: false
+    t.text "material", default: [], array: true
+    t.text "quantity", default: [], array: true
+    t.text "make", default: [], array: true
     t.text "point", null: false
     t.text "menu_image"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "genre", default: "未分類", null: false
