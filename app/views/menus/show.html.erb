@@ -39,6 +39,26 @@
               <%= Rinku.auto_link(simple_format(@menu.point), :all, 'target="_blank"').html_safe %>
             </div>
           </div>
+
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="bi bi-info-circle"></i>
+              カレーのジャンル
+            </div>
+            <div class="card-body">
+              <%= @menu.genre %>
+            </div>
+          </div>
+            
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="bi bi-info-circle"></i>
+              辛さレベル
+            </div>
+            <div class="card-body">
+              <%= @menu.hot %>
+            </div>
+          </div>
             
           <% if current_user&.own?(@menu) %>
             <%= link_to '削除', menu_path(@menu.id), method: :delete, class: 'btn btn-primary ml-2', data: { confirm: '本当に削除しますか？' } %>

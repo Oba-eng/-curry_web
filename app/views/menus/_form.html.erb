@@ -7,29 +7,44 @@
   </div>
 
   <div class="form-row d-flex">
-  <div class="flex-grow-1">
-    <div class="menu-image-prev" onclick="document.getElementById('menu_image_field').click();">
-      <% if f.object.menu_image.present? %>
-        <%= image_tag f.object.menu_image.thumb.url, alt: "menu-image", id: "img_prev", class: "img-thumbnail", size: "300x105" %>
-      <% else %>
-        <%= image_tag "menu-default-image.png", alt: "menu-image", id: :img_prev, class: "img-thumbnail", size: "300x105" %>
-      <% end %>
-      <%= f.file_field :menu_image, id: "menu_image_field", class: "hidden", accept: "image/*", onchange: "previewImage(this);", style: "display:none;" %>
+    <div class="flex-grow-1">
+      <div class="menu-image-prev" onclick="document.getElementById('menu_image_field').click();">
+        <% if f.object.menu_image.present? %>
+          <%= image_tag f.object.menu_image.thumb.url, alt: "menu-image", id: "img_prev", class: "img-thumbnail", size: "300x105" %>
+        <% else %>
+          <%= image_tag "menu-default-image.png", alt: "menu-image", id: :img_prev, class: "img-thumbnail", size: "300x105" %>
+        <% end %>
+        <%= f.file_field :menu_image, id: "menu_image_field", class: "hidden", accept: "image/*", onchange: "previewImage(this);", style: "display:none;" %>
+      </div>
+    </div>
+    <div class="flex-grow-1">
+      <div class="mb-3">
+        <%= f.label :材料 %>
+        <%= f.text_area :material, class: 'form-control', rows: 8 %>
+      </div>
     </div>
   </div>
-  <div class="flex-grow-1">
-    <div class="mb-3">
-      <%= f.label :材料 %>
-      <%= f.text_area :material, class: 'form-control', rows: 8 %>
+  <div class="form-row d-flex">
+    <div class="flex-grow-1">
+      <div class="mb-3">
+        <%= f.label :カレーのジャンル %>
+        <%= f.select :genre, [["バターチキンカレー", "バターチキンカレー"], ["ドライカレー", "ドライカレー"], ["グリーンカレー", "グリーンカレー"], ["スープカレー", "スープカレー"], ["ドライカレー", "ドライカレー"], ["ビーフカレー", "ビーフカレー"], ["ポークカレー", "ポークカレー"], ["カツカレー", "カツカレー"], ["シーフードカレー", "シーフードカレー"], ["野菜カレー", "野菜カレー"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+      </div>
+    </div>
+    <div class="flex-grow-1">
+      <div class="mb-3">
+        <%= f.label :辛さレベル %>
+        <%= f.select :hot, [["1:甘口", "1:甘口"], ["2:甘口〜中辛", "2:甘口〜中辛"], ["3:中辛", "3:中辛"], ["4:中辛〜辛口", "4:中辛〜辛口"], ["5:辛口", "5:辛口"]], include_blank: "選択して下さい" %>
+      </div>
     </div>
   </div>
-</div>
 
-  <div class="mb-3">
+  <div class="mb-3 mx-3">
     <%= f.label :作り方 %>
     <%= f.text_area :make, class: 'form-control', rows: 8 %>
   </div>
-  <div class="mb-3">
+  
+  <div class="mb-3 mx-3">
     <%= f.label :ポイント %>
     <%= f.text_area :point, class: 'form-control', rows: 8 %>
   </div>

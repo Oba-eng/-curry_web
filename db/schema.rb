@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_10_123259) do
+ActiveRecord::Schema.define(version: 2024_05_20_014130) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2024_04_10_123259) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "genre", default: "未分類", null: false
+    t.string "hot", default: "未分類", null: false
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 

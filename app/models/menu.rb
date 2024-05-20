@@ -3,6 +3,9 @@ class Menu < ApplicationRecord
   
   belongs_to :user
 
+  validates :genre, presence: true
+  validates :hot, presence: true
+
   # お気に入り機能
   belongs_to :user, optional: true
   has_many :favorites, dependent: :destroy 
