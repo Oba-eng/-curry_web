@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
     <div class="col-12 col-md-8">
       <div class="card mb-3">
@@ -6,27 +6,39 @@
           <h1>
             <%= @menu.name %>
           </h1>
-          <div>
-            <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+
+          <div class="row">
+            <!-- 画像を表示 -->
+            <div class="col-md-6">
+              <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+            </div>
+
+            <!-- 材料と分量のリストを表示 -->
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header">
+                  材料と分量
+                </div>
+                <ul class="list-group list-group-flush">
+                  <% @menu.material.each_with_index do |material, index| %>
+                    <li class="list-group-item d-flex justify-content-between">
+                      <span><%= material %></span>
+                      <span><%= @menu.quantity[index] %></span>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
           </div>
 
           <div class="card mb-3">
             <div class="card-header">
-              <i class="bi bi-info-circle"></i>
-              材料
-            </div>
-            <div class="card-body">
-              <%= Rinku.auto_link(simple_format(@menu.material), :all, 'target="_blank"').html_safe %>
-            </div>
-          </div>
-
-          <div class="card mb-3">
-            <div class="card-header">
-              <i class="bi bi-info-circle"></i>
               作り方
             </div>
             <div class="card-body">
-              <%= Rinku.auto_link(simple_format(@menu.make), :all, 'target="_blank"').html_safe %>
+              <% @menu.make.each do |step| %>
+                <p><%= step %></p>
+              <% end %>
             </div>
           </div>
 
@@ -49,7 +61,7 @@
               <%= @menu.genre %>
             </div>
           </div>
-            
+
           <div class="card mb-3">
             <div class="card-header">
               <i class="bi bi-info-circle"></i>
@@ -59,7 +71,7 @@
               <%= @menu.hot %>
             </div>
           </div>
-            
+
           <% if current_user&.own?(@menu) %>
             <%= link_to '削除', menu_path(@menu.id), method: :delete, class: 'btn btn-primary ml-2', data: { confirm: '本当に削除しますか？' } %>
             <%= link_to '編集', edit_menu_path(@menu), class: 'btn btn-primary ml-2' %>
