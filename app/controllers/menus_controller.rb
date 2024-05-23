@@ -74,6 +74,6 @@ class MenusController < ApplicationController
     end
 
     def menu_params
-      params.require(:menu).permit(:name, :genre, :hot, :make, :point, :menu_image, material: [], quantity: [])
+      params.require(:menu).permit(:name, :genre, :hot, :point, :menu_image, make: [], material: [], quantity: [])
     end
 end

@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require form
+//= require make
 
 console.log("読み込み");

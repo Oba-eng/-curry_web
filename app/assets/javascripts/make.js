@@ -1,29 +1,33 @@
-var i = 1 ;
-function addForm() {
-  var input_data = document.createElement('input');
-  input_data.type = 'text';
-  input_data.id = 'inputform_' + i;
-  input_data.placeholder = '材料と分量';
-  var parent = document.getElementById('form_area');
-  parent.appendChild(input_data);
+function addMakeStep() {
+  var stepCount = document.querySelectorAll('textarea[name^="menu[make]"]').length + 1;
+  
+  var textareaStep = document.createElement('textarea');
+  textareaStep.name = 'menu[make][]';
+  textareaStep.id = 'make_step_' + stepCount;
+  textareaStep.className = 'form-control';
+  textareaStep.rows = 8;
+  textareaStep.placeholder = 'ステップ' + stepCount + 'の作り方を入力してください';
 
-  var button_data = document.createElement('button');
-  button_data.id = i;
-  button_data.onclick = function(){deleteBtn(this);}
-  button_data.innerHTML = '×';
-  var input_area = document.getElementById(input_data.id);
-  parent.appendChild(button_data);
+  var buttonDelete = document.createElement('button');
+  buttonDelete.type = 'button';
+  buttonDelete.onclick = function() { deleteMakeStep(stepCount); };
+  buttonDelete.innerHTML = '×';
 
-  i++ ;
+  var labelStep = document.createElement('label');
+  labelStep.innerHTML = 'ステップ' + stepCount;
+
+  var formGroup = document.createElement('div');
+  formGroup.className = 'form-group';
+  formGroup.id = 'make_formgroup_' + stepCount;
+  formGroup.appendChild(labelStep);
+  formGroup.appendChild(textareaStep);
+  formGroup.appendChild(buttonDelete);
+
+  var parent = document.getElementById('make_form_area');
+  parent.appendChild(formGroup);
 }
 
-function deleteBtn(target) {
-  var target_id = target.id;
-  var parent = document.getElementById('form_area');
-  var ipt_id = document.getElementById('inputform_' + target_id);
-  var tgt_id = document.getElementById(target_id);
-  parent.removeChild(ipt_id);
-  parent.removeChild(tgt_id);	
+function deleteMakeStep(stepCount) {
+  var formGroup = document.getElementById('make_formgroup_' + stepCount);
+  formGroup.remove();
 }
-
-// ここは作り方をステップで作成できるように編集すること

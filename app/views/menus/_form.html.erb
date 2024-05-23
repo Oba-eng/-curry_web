@@ -1,4 +1,6 @@
 <%= javascript_include_tag 'menus' %>
+<%= javascript_include_tag 'form' %>
+<%= javascript_include_tag 'make' %>
 
 <%= form_with(model: @menu, local: true) do |f| %>
   <div class="mb-3">
@@ -19,7 +21,7 @@
     </div>
     <div class="flex-grow-1">
       <div class="card-body">
-        <div id="form_area">
+        <div id="material_quantity_form_area">
             <!-- 初期のフォームをラップする div -->
             <div class="form-group">
               <input type="text" name="menu[material][]" id="a1" placeholder="材料">
@@ -27,7 +29,7 @@
               <button type="button" id="1" onclick="deleteForms(this.id)">×</button>
             </div>
         </div>
-        <button type="button" onclick="addForms()">追加</button>
+        <button type="button" onclick="addMaterialQuantityForms()">材料と分量を追加</button>
       </div>
     </div>
   </div>
@@ -48,10 +50,18 @@
   </div>
 
   <div class="mb-3 mx-3">
-    <%= f.label :make, "作り方" %>
-    <%= f.text_area :make, class: 'form-control', rows: 8 %>
+    作り方
+    <div id="make_form_area">
+      <!-- 初期の作り方ステップのフィールド -->
+      <div class="form-group">
+        <label for="make_step_1">ステップ1</label>
+        <textarea name="menu[make][]" id="make_step_1" class="form-control" rows="8" placeholder="作り方のステップ"></textarea>
+        <button type="button" id="1" onclick="deleteMakeStep(this.id)">×</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary mt-2" onclick="addMakeStep()">作り方を追加</button>
   </div>
-  
+
   <div class="mb-3 mx-3">
     <%= f.label :point, "ポイント" %>
     <%= f.text_area :point, class: 'form-control', rows: 8 %>

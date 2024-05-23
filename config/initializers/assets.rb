@@ -10,3 +10,4 @@ Rails.application.config.assets.version = '1.0'
 # folder are already added.
 Rails.application.config.assets.precompile += %w( menus.js )
 Rails.application.config.assets.precompile += %w( form.js )
+Rails.application.config.assets.precompile += %w( make.js )
