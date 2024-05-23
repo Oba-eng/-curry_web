@@ -1,6 +1,10 @@
 <div class="col">
   <div class="card h-100">
-    <%= link_to menu_path(menu), class: 'menu-card' do %>
+    <%= link_to menu_path(menu), class: 'menu-card', style: 'text-decoration: none; color: inherit;' do %>
+      <h4 class="card-title fw-bold">
+        <%= menu.name %>
+      </h4>
+
       <!-- 画像がある場合は以下のように表示 -->
       <div class="menu-content-container">
         <div class="menu-image">
@@ -15,12 +19,6 @@
     <hr />
       <!-- ここに@menuの内容を表示するコードを追加 -->
       <div class="card-body">
-        <h4 class="card-title fw-bold">
-          <%= menu.name %>
-        </h4>
-        <p class="card-text"><%= menu.material %></p>
-        <p class="card-text"><%= menu.point %></p>
-        <hr />
         <div class="d-flex align-items-center justify-content-between">
           <div class="d-flex align-items-center gap-3">
             <% if menu.user.present? %>

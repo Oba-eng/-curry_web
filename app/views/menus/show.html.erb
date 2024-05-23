@@ -36,8 +36,15 @@
               作り方
             </div>
             <div class="card-body">
-              <% @menu.make.each do |step| %>
-                <p><%= step %></p>
+              <% @menu.make.each_with_index do |step, index| %>
+                <div class="card mb-3">
+                  <div class="card-header">
+                    ステップ<%= index + 1 %>
+                  </div>
+                  <div class="card-body">
+                    <p><%= step %></p>
+                  </div>
+                </div>
               <% end %>
             </div>
           </div>
@@ -53,7 +60,6 @@
 
           <div class="card mb-3">
             <div class="card-header">
-              <i class="bi bi-info-circle"></i>
               カレーのジャンル
             </div>
             <div class="card-body">
@@ -63,7 +69,6 @@
 
           <div class="card mb-3">
             <div class="card-header">
-              <i class="bi bi-info-circle"></i>
               辛さレベル
             </div>
             <div class="card-body">
