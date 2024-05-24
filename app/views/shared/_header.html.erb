@@ -9,7 +9,7 @@
 
 
     <% if current_user.present? %>
-      <%= link_to current_user.name, "/users/#{current_user.id}", class: 'nav-link' %>
+      <span class="nav-link"><%= current_user.name %></span>
     <% else %>
       ゲスト
     <% end %>
@@ -19,7 +19,8 @@
 <%= render 'shared/search', q: @q, url: menus_path %>
   <% if current_user.present? %>
     <li class="nav-item">
-      <%= link_to 'マイカレー', mypage_tree_index_path, class: 'nav-link' %>
+      <!-- <%= link_to 'マイカレー', mypage_tree_index_path, class: 'nav-link' %> -->
+      <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
     </li>
     <li class="nav-item">
       <%= link_to 'いいね一覧', favorites_user_path(current_user), class: 'nav-link' %>
