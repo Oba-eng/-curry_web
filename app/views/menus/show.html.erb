@@ -42,7 +42,7 @@
                     ステップ<%= index + 1 %>
                   </div>
                   <div class="card-body">
-                    <p><%= step %></p>
+                    <p><%= Rinku.auto_link(simple_format(step), :all, 'target="_blank"').html_safe %></p>
                   </div>
                 </div>
               <% end %>
