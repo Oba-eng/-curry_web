@@ -3,8 +3,14 @@ class Menu < ApplicationRecord
   
   belongs_to :user
 
-  validates :genre, presence: true
-  validates :hot, presence: true
+  validates :name, presence: { message: 'メニュー名を入力してください' }
+  validates :menu_image, presence: { message: "メニュー画像を選択してください" }
+  validates :material, presence: { message: '材料を入力してください' }
+  validates :quantity, presence: { message: '分量を入力してください' }
+  validates :make, presence: { message: '作り方を入力してください' }
+  validates :point, presence: { message: 'ポイントを入力してください' }
+  validates :genre, presence: { message: 'ジャンルを選択してください' }
+  validates :hot, presence: { message: '辛さレベルを選択してください' }
 
   # お気に入り機能
   belongs_to :user, optional: true
