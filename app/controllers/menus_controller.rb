@@ -15,11 +15,20 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
     @q = Menu.ransack(params[:q])
-    @menu.material = [''] if @menu.material.blank? # 空の要素を1つ追加して初期化
-    @menu.quantity = [''] if @menu.quantity.blank? # 空の要素を1つ追加して初期化
-    @menu.make = [''] if @menu.make.blank? # 空の要素を1つ追加して初期化
-  end
 
+    # セッションからデータを復元する
+    if session[:menu_params]
+      @menu.attributes = session[:menu_params]
+      @menu.material = session[:menu_params][:material] || ['']
+      @menu.quantity = session[:menu_params][:quantity] || ['']
+      @menu.make = session[:menu_params][:make] || ['']
+      session.delete(:menu_params)
+    else
+      @menu.material = [''] if @menu.material.blank? # 空の要素を1つ追加して初期化
+      @menu.quantity = [''] if @menu.quantity.blank? # 空の要素を1つ追加して初期化
+      @menu.make = [''] if @menu.make.blank? # 空の要素を1つ追加して初期化
+    end
+  end
 
   def edit
     @menu = Menu.find(params[:id])
@@ -29,17 +38,17 @@ class MenusController < ApplicationController
   def create
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-    
-    if params[:back].present?
-      render :new
-      return
+  
+    if params[:back]
+      session[:menu_params] = menu_params
+      redirect_to new_menu_path and return
     end
   
-    if @menu.save
-      redirect_to menus_path, success: '保存しました'
-    else
-      render :new
+    unless @menu.save
+      render :new and return
     end
+  
+    redirect_to @menu, notice: 'Menu was successfully created.'
   end
 
   def update
@@ -67,9 +76,8 @@ class MenusController < ApplicationController
 
   def confirm_new
     @q = Menu.ransack(params[:q])
-    @menu = current_user.menus.new(menu_params)
+    @menu = current_user.menus.new(session[:menu_params] || menu_params)
   end
-  
 
   private
     def set_menu
@@ -77,6 +85,6 @@ class MenusController < ApplicationController
     end
 
     def menu_params
-      params.require(:menu).permit(:name, :genre, :hot, :point, :menu_image, make: [], material: [], quantity: [])
+      params.require(:menu).permit(:name, :genre, :hot, :point, :menu_image, :menu_image_cache, material: [], quantity: [], make: [])
     end
 end
