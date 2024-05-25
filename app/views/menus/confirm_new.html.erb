@@ -7,43 +7,59 @@
             <h1>
               <%= @menu.name %>
             </h1>
-            <div>
-              <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+
+            <div class="row">
+              <div class="col-md-6">
+                <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+              </div>
+
+              <!-- 材料と分量のリストを表示 -->
+              <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-header">
+                    材料と分量
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <% @menu.material.each_with_index do |material, index| %>
+                      <li class="list-group-item d-flex justify-content-between">
+                        <span><%= material %></span>
+                        <span><%= @menu.quantity[index] %></span>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div class="card mb-3">
               <div class="card-header">
-                <i class="bi bi-info-circle"></i>
-                材料
-              </div>
-              <div class="card-body">
-                <%= Rinku.auto_link(simple_format(@menu.material), :all, 'target="_blank"').html_safe %>
-              </div>
-            </div>
-
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="bi bi-info-circle"></i>
                 作り方
               </div>
               <div class="card-body">
-                <%= Rinku.auto_link(simple_format(@menu.make), :all, 'target="_blank"').html_safe %>
+                <% @menu.make.each_with_index do |step, index| %>
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      ステップ<%= index + 1 %>
+                    </div>
+                    <div class="card-body">
+                      <p><%= Rinku.auto_link(simple_format(step), :all, 'target="_blank"').html_safe %></p>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
 
             <div class="card mb-3">
               <div class="card-header">
-                <i class="bi bi-info-circle"></i>
                 ポイント
               </div>
               <div class="card-body">
-                <%= Rinku.auto_link(simple_format(@menu.point), :all, 'target="_blank"').html_safe %>
+                <%= @menu.point %>
               </div>
             </div>
 
             <div class="card mb-3">
               <div class="card-header">
-                <i class="bi bi-info-circle"></i>
                 カレーのジャンル
               </div>
               <div class="card-body">
@@ -53,7 +69,6 @@
 
             <div class="card mb-3">
               <div class="card-header">
-                <i class="bi bi-info-circle"></i>
                 辛さレベル
               </div>
               <div class="card-body">
@@ -64,6 +79,7 @@
             <% if current_user&.own?(@menu) %>
               <%= f.hidden_field :name %>
               <%= f.hidden_field :material %>
+              <%= f.hidden_field :quantity %>
               <%= f.hidden_field :make %>
               <%= f.hidden_field :point %>
               <%= f.hidden_field :menu_image_cache %>

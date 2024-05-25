@@ -15,7 +15,11 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
     @q = Menu.ransack(params[:q])
+    @menu.material = [''] if @menu.material.blank? # 空の要素を1つ追加して初期化
+    @menu.quantity = [''] if @menu.quantity.blank? # 空の要素を1つ追加して初期化
+    @menu.make = [''] if @menu.make.blank? # 空の要素を1つ追加して初期化
   end
+
 
   def edit
     @menu = Menu.find(params[:id])
@@ -64,7 +68,6 @@ class MenusController < ApplicationController
   def confirm_new
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-    render :new unless @menu.valid?
   end
   
 

@@ -1,8 +1,4 @@
-<%= javascript_include_tag 'menus' %>
-<%= javascript_include_tag 'form' %>
-<%= javascript_include_tag 'make' %>
-
-<%= form_with(model: @menu, local: true) do |f| %>
+<%= form_with(model: @menu, url: confirm_new_menus_path, local: true) do |f| %>
   <div class="mb-3">
     <%= f.label :name, "メニュー名" %>
     <%= f.text_field :name, class: 'form-control' %>
@@ -29,12 +25,14 @@
     <div class="flex-grow-1">
       <div class="card-body">
         <div id="material_quantity_form_area">
-            <!-- 初期のフォームをラップする div -->
+          <!-- 材料と分量のフィールド -->
+          <% @menu.material.each_with_index do |material, index| %>
             <div class="form-group">
-              <input type="text" name="menu[material][]" id="a1" placeholder="材料">
-              <input type="text" name="menu[quantity][]" id="b1" placeholder="分量">
-              <button type="button" id="1" onclick="deleteForms(this.id)">×</button>
+              <input type="text" name="menu[material][]" id="a<%= index %>" value="<%= material %>" placeholder="材料">
+              <input type="text" name="menu[quantity][]" id="b<%= index %>" value="<%= @menu.quantity[index] %>" placeholder="分量">
+              <button type="button" id="<%= index %>" onclick="deleteForms(this.id)">×</button>
             </div>
+          <% end %>
         </div>
         <button type="button" class="btn btn-secondary mt-2" onclick="addMaterialQuantityForms()">材料と分量を追加</button>
       </div>
@@ -45,7 +43,7 @@
     <div class="flex-grow-1">
       <div class="mb-3">
         <%= f.label :genre, "カレーのジャンル" %>
-        <%= f.select :genre, [["バターチキンカレー", "バターチキンカレー"], ["ドライカレー", "ドライカレー"], ["グリーンカレー", "グリーンカレー"], ["スープカレー", "スープカレー"], ["ビーフカレー", "ビーフカレー"], ["ポークカレー", "ポークカレー"], ["カツカレー", "カツカレー"], ["シーフードカレー", "シーフードカレー"], ["野菜カレー", "野菜カレー"], ["その他", "その他"]], include_blank: "選択して下さい" %>
+        <%= f.select :genre, [["バターチキンカレー", "バターチキンカレー"], ["ドライカレー", "ドライカレー"], ["グリーンカレー", "グリーンカレー"], ["スープカレー", "スープカレー"], ["ビーフカレー", "ビーフカレー"], ["ポークカレー", "ポークカレー"], ["カツカレー", "カツカレー"], ["シーフードカレー", "シーフードカレー"], ["野菜カレー", "野菜カレー"], ["その他", "その他"]], include_blank: "選択して下さい", selected: @menu.genre %>
         <% if @menu.errors[:genre].any? %>
             <div class="text-danger"><%= @menu.errors[:genre].first %></div>
         <% end %>
@@ -54,7 +52,7 @@
     <div class="flex-grow-1">
       <div class="mb-3">
         <%= f.label :hot, "辛さレベル" %>
-        <%= f.select :hot, [["1:甘口", "1:甘口"], ["2:甘口〜中辛", "2:甘口〜中辛"], ["3:中辛", "3:中辛"], ["4:中辛〜辛口", "4:中辛〜辛口"], ["5:辛口", "5:辛口"]], include_blank: "選択して下さい" %>
+        <%= f.select :hot, [["1:甘口", "1:甘口"], ["2:甘口〜中辛", "2:甘口〜中辛"], ["3:中辛", "3:中辛"], ["4:中辛〜辛口", "4:中辛〜辛口"], ["5:辛口", "5:辛口"]], include_blank: "選択して下さい", selected: @menu.hot %>
         <% if @menu.errors[:hot].any? %>
             <div class="text-danger"><%= @menu.errors[:hot].first %></div>
         <% end %>
@@ -65,12 +63,14 @@
   <div class="mb-3 mx-3">
     作り方
     <div id="make_form_area">
-      <!-- 初期の作り方ステップのフィールド -->
-      <div class="form-group">
-        <label for="make_step_1">ステップ1</label>
-        <textarea name="menu[make][]" id="make_step_1" class="form-control" rows="8" placeholder="作り方のステップ"></textarea>
-        <button type="button" id="1" onclick="deleteMakeStep(this.id)">×</button>
-      </div>
+      <!-- 作り方ステップのフィールド -->
+      <% @menu.make.each_with_index do |make, index| %>
+        <div class="form-group">
+          <label for="make_step_<%= index + 1 %>">ステップ<%= index + 1 %></label>
+          <textarea name="menu[make][]" id="make_step_<%= index + 1 %>" class="form-control" rows="8" placeholder="作り方のステップ"><%= make %></textarea>
+          <button type="button" id="<%= index + 1 %>" onclick="deleteMakeStep(this.id)">×</button>
+        </div>
+      <% end %>
     </div>
     <button type="button" class="btn btn-secondary mt-2" onclick="addMakeStep()">作り方を追加</button>
   </div>

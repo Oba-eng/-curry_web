@@ -5,9 +5,8 @@ Rails.application.routes.draw do
     member do
       get :favorites
     end
-    resources :menus
   end
-  
+
   resources :menus do
     member do
       post :favorite, to: 'favorites#create'
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
     resource :favorite, only: [:destroy]
 
     collection do
-      post :confirm, action: :confirm_new
+      post :confirm_new, action: :confirm_new
     end
   end
 
