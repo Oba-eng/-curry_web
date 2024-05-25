@@ -76,7 +76,13 @@ class MenusController < ApplicationController
 
   def confirm_new
     @q = Menu.ransack(params[:q])
-    @menu = current_user.menus.new(session[:menu_params] || menu_params)
+    @menu = current_user.menus.new(menu_params)
+  
+    if @menu.valid?
+      render :confirm_new
+    else
+      render :new
+    end
   end
 
   private
