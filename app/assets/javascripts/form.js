@@ -19,7 +19,7 @@ function addMaterialQuantityForms() {
   buttonDelete.type = 'button';
   buttonDelete.id = materialQuantityCounter;
   buttonDelete.onclick = function() { deleteMaterialQuantityForms(this.id); };
-  buttonDelete.innerHTML = '×';
+  buttonDelete.innerHTML = '削除';
 
   var formGroup = document.createElement('div');
   formGroup.className = 'form-group';

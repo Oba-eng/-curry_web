@@ -1,3 +1,27 @@
+function renumberMakeSteps() {
+  var formGroups = document.querySelectorAll('#make_form_area .form-group');
+  formGroups.forEach(function(formGroup, index) {
+    var stepNumber = index + 1;
+    formGroup.id = 'make_formgroup_' + stepNumber;
+
+    var label = formGroup.querySelector('label');
+    label.innerHTML = 'ステップ' + stepNumber;
+
+    var textarea = formGroup.querySelector('textarea');
+    textarea.id = 'make_step_' + stepNumber;
+
+    var button = formGroup.querySelector('button');
+    button.id = stepNumber;
+    button.setAttribute('onclick', 'deleteMakeStep(' + stepNumber + ')');
+  });
+}
+
+function deleteMakeStep(stepCount) {
+  var formGroup = document.getElementById('make_formgroup_' + stepCount);
+  formGroup.remove();
+  renumberMakeSteps();
+}
+
 function addMakeStep() {
   var stepCount = document.querySelectorAll('textarea[name^="menu[make]"]').length + 1;
   
@@ -11,7 +35,7 @@ function addMakeStep() {
   var buttonDelete = document.createElement('button');
   buttonDelete.type = 'button';
   buttonDelete.onclick = function() { deleteMakeStep(stepCount); };
-  buttonDelete.innerHTML = '×';
+  buttonDelete.innerHTML = '削除';
 
   var labelStep = document.createElement('label');
   labelStep.innerHTML = 'ステップ' + stepCount;
@@ -25,9 +49,6 @@ function addMakeStep() {
 
   var parent = document.getElementById('make_form_area');
   parent.appendChild(formGroup);
-}
 
-function deleteMakeStep(stepCount) {
-  var formGroup = document.getElementById('make_formgroup_' + stepCount);
-  formGroup.remove();
+  renumberMakeSteps();
 }

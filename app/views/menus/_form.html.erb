@@ -30,7 +30,7 @@
             <div class="form-group">
               <input type="text" name="menu[material][]" id="a<%= index %>" value="<%= material %>" placeholder="材料">
               <input type="text" name="menu[quantity][]" id="b<%= index %>" value="<%= @menu.quantity[index] %>" placeholder="分量">
-              <button type="button" id="<%= index %>" onclick="deleteForms(this.id)">×</button>
+              <button type="button" id="<%= index %>" onclick="deleteForms(this.id)">削除</button>
             </div>
           <% end %>
         </div>
@@ -68,7 +68,7 @@
         <div class="form-group">
           <label for="make_step_<%= index + 1 %>">ステップ<%= index + 1 %></label>
           <textarea name="menu[make][]" id="make_step_<%= index + 1 %>" class="form-control" rows="8" placeholder="作り方のステップ"><%= make %></textarea>
-          <button type="button" id="<%= index + 1 %>" onclick="deleteMakeStep(this.id)">×</button>
+          <button type="button" id="<%= index + 1 %>" onclick="deleteMakeStep(this.id)">削除</button>
         </div>
       <% end %>
     </div>

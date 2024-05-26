@@ -16,7 +16,6 @@ class MenusController < ApplicationController
     @menu = Menu.new
     @q = Menu.ransack(params[:q])
 
-    # セッションからデータを復元する
     if session[:menu_params]
       @menu.attributes = session[:menu_params]
       @menu.material = session[:menu_params][:material] || ['']
@@ -24,9 +23,9 @@ class MenusController < ApplicationController
       @menu.make = session[:menu_params][:make] || ['']
       session.delete(:menu_params)
     else
-      @menu.material = [''] if @menu.material.blank? # 空の要素を1つ追加して初期化
-      @menu.quantity = [''] if @menu.quantity.blank? # 空の要素を1つ追加して初期化
-      @menu.make = [''] if @menu.make.blank? # 空の要素を1つ追加して初期化
+      @menu.material = [''] if @menu.material.blank?
+      @menu.quantity = [''] if @menu.quantity.blank? 
+      @menu.make = [''] if @menu.make.blank? 
     end
   end
 
@@ -38,12 +37,12 @@ class MenusController < ApplicationController
   def create
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-  
+    
     if params[:back]
       session[:menu_params] = menu_params
       redirect_to new_menu_path and return
     end
-  
+    
     unless @menu.save
       render :new and return
     end
