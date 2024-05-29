@@ -25,11 +25,27 @@ class Menu < ApplicationRecord
     ransack(name_or_material_cont: query).result
   end
 
+  validate :make_present
+  validate :material_present
+  validate :quantity_present
+  
   private
 
   def make_present
     if make.blank? || make.all?(&:blank?)
       errors.add(:make, '作り方を入力してください')
+    end
+  end
+
+  def material_present
+    if material.blank? || material.all?(&:blank?)
+      errors.add(:material, '材料を入力してください')
+    end
+  end
+
+  def quantity_present
+    if quantity.blank? || quantity.all?(&:blank?)
+      errors.add(:quantity, '分量を入力してください')
     end
   end
 end

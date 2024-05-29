@@ -1,85 +1,100 @@
 <%= form_with model: @menu, url: menus_path, local: true do |f| %>
-  <div class="card-body">
-    <h1>
-      <%= @menu.name %>
-    </h1>
-    <div>
-      <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
-    </div>
-
-    <!-- 材料と分量のリストを表示 -->
-    <div class="card mb-3">
-      <div class="card-header">
-        材料と分量
-      </div>
-      <ul class="list-group list-group-flush">
-        <% @menu.material.each_with_index do |material, index| %>
-          <li class="list-group-item d-flex justify-content-between">
-            <span><%= material %></span>
-            <span><%= @menu.quantity[index] %></span>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        作り方
-      </div>
-      <div class="card-body">
-        <% @menu.make.each_with_index do |step, index| %>
-          <div class="card mb-3">
-            <div class="card-header">
-              ステップ<%= index + 1 %>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1 class="text-center mb-4 mt-4">メニュー確認</h1>
+        <div class="card mt-3">
+          <div class="card-body">
             <div class="card-body">
-              <p><%= Rinku.auto_link(simple_format(step), :all, 'target="_blank"').html_safe %></p>
+              <h1>
+                <%= @menu.name %>
+              </h1>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= image_tag @menu.menu_image.url, class: 'w-100 mb-3' %>
+                </div>
+
+                <!-- 材料と分量のリストを表示 -->
+                <div class="col-md-4">
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      材料と分量
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <% @menu.material.each_with_index do |material, index| %>
+                        <li class="list-group-item d-flex justify-content-between">
+                          <span><%= material %></span>
+                          <span><%= @menu.quantity[index] %></span>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-header">
+                  作り方
+                </div>
+                <div class="card-body">
+                  <% @menu.make.each_with_index do |step, index| %>
+                    <div class="card mb-3">
+                      <div class="card-header">
+                        ステップ<%= index + 1 %>
+                      </div>
+                      <div class="card-body">
+                        <p><%= Rinku.auto_link(simple_format(step), :all, 'target="_blank"').html_safe %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-header">
+                  ポイント
+                </div>
+                <div class="card-body">
+                  <%= @menu.point %>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-header">
+                  カレーのジャンル
+                </div>
+                <div class="card-body">
+                  <%= @menu.genre %>
+                </div>
+              </div>
+
+              <div class="card mb-3">
+                <div class="card-header">
+                  辛さレベル
+                </div>
+                <div class="card-body">
+                  <%= @menu.hot %>
+                </div>
+              </div>
+
+              <%= form_for :menu, url: menus_path do |f| %>
+                <% if current_user&.own?(@menu) %>
+                  <%= f.hidden_field :name %>
+                  <%= f.hidden_field :material, multiple: true, value: @menu.material %>
+                  <%= f.hidden_field :quantity, multiple: true, value: @menu.quantity %>
+                  <%= f.hidden_field :make, multiple: true, value: @menu.make %>
+                  <%= f.hidden_field :point %>
+                  <%= f.hidden_field :menu_image_cache %>
+                  <%= f.hidden_field :genre %>
+                  <%= f.hidden_field :hot %>
+                  <%= f.submit '戻る', name: 'back', class: 'btn btn-primary ml-2' %>
+                <% end %>
+              <% end %>
+              <%= f.submit '公開する', class: 'btn btn-primary ml-2' %>
             </div>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        ポイント
-      </div>
-      <div class="card-body">
-        <%= @menu.point %>
-      </div>
-    </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        カレーのジャンル
-      </div>
-      <div class="card-body">
-        <%= @menu.genre %>
-      </div>
-    </div>
-
-    <div class="card mb-3">
-      <div class="card-header">
-        辛さレベル
-      </div>
-      <div class="card-body">
-        <%= @menu.hot %>
-      </div>
-    </div>
-
-    <%= form_for :menu, url: menus_path do |f| %>
-      <% if current_user&.own?(@menu) %>
-        <%= f.hidden_field :name %>
-        <%= f.hidden_field :material, multiple: true, value: @menu.material %>
-        <%= f.hidden_field :quantity, multiple: true, value: @menu.quantity %>
-        <%= f.hidden_field :make, multiple: true, value: @menu.make %>
-        <%= f.hidden_field :point %>
-        <%= f.hidden_field :menu_image_cache %>
-        <%= f.hidden_field :genre %>
-        <%= f.hidden_field :hot %>
-        <%= f.submit '戻る', name: 'back', class: 'btn btn-primary ml-2' %>
-      <% end %>
-    <% end %>
-    <%= f.submit '公開する', class: 'btn btn-primary ml-2' %>
   </div>
 <% end %>
