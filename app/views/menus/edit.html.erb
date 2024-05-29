@@ -1,10 +1,106 @@
+<%= javascript_include_tag 'menus' %>
 <div class="container">
   <div class="row">
     <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
     <h1 class="text-center mb-4 mt-4">編集</h1>
       <div class="card mt-3">
         <div class="card-body">
-          <%= render 'form', menu: @menu %>
+          <%= form_with(model: @menu, url: menu_path(@menu), method: :patch) do |f| %>
+            <div class="mb-3">
+              <%= f.label :name, "メニュー名" %>
+              <%= f.text_field :name, class: 'form-control' %>
+              <% if @menu.errors[:name].any? %>
+                <div class="text-danger"><%= @menu.errors[:name].first %></div>
+              <% end %>
+            </div>
+
+            <div class="form-row d-flex">
+              <div class="flex-grow-1">
+                <div class="menu-image-prev" onclick="document.getElementById('menu_image_field').click();">
+                  <% if @menu.menu_image.present? %>
+                    <%= image_tag @menu.menu_image.thumb.url, alt: "menu-image", id: "img_prev", class: "img-thumbnail", size: "300x105" %>
+                  <% else %>
+                    <%= image_tag "menu-default-image.png", alt: "menu-image", id: :img_prev, class: "img-thumbnail", size: "300x105" %>
+                  <% end %>
+                  <%= f.file_field :menu_image, id: "menu_image_field", class: "hidden", accept: "image/*", onchange: "previewImage(this);", style: "display:none;" %>
+                </div>
+                <% if @menu.errors[:menu_image].any? %>
+                    <div class="text-danger"><%= @menu.errors[:menu_image].first %></div>
+                <% end %>
+              </div>
+
+              <div class="flex-grow-1">
+                <div class="card-body">
+                  <div id="material_quantity_form_area">
+                    <!-- 材料と分量のフィールド -->
+                    <% @menu.material.each_with_index do |material, index| %>
+                      <div class="form-group">
+                        <input type="text" name="menu[material][]" id="a<%= index %>" value="<%= material %>" placeholder="材料">
+                        <input type="text" name="menu[quantity][]" id="b<%= index %>" value="<%= @menu.quantity[index] %>" placeholder="分量">
+                        <button type="button" id="<%= index %>" onclick="deleteForms(this.id)">削除</button>
+                      </div>
+                    <% end %>
+                  </div>
+                  <% if @menu.errors[:material].any? %>
+                    <div class="text-danger"><%= @menu.errors[:material].first %></div>
+                  <% end %>
+                  <% if @menu.errors[:quantity].any? %>
+                    <div class="text-danger"><%= @menu.errors[:quantity].first %></div>
+                  <% end %>
+                  <button type="button" class="btn btn-secondary mt-2" onclick="addMaterialQuantityForms()">材料と分量を追加</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row d-flex mt-3">
+              <div class="flex-grow-1">
+                <div class="mb-3">
+                  <%= f.label :genre, "カレーのジャンル" %>
+                  <%= f.select :genre, [["バターチキンカレー", "バターチキンカレー"], ["ドライカレー", "ドライカレー"], ["グリーンカレー", "グリーンカレー"], ["スープカレー", "スープカレー"], ["ビーフカレー", "ビーフカレー"], ["ポークカレー", "ポークカレー"], ["カツカレー", "カツカレー"], ["シーフードカレー", "シーフードカレー"], ["野菜カレー", "野菜カレー"], ["その他", "その他"]], include_blank: "選択して下さい", selected: @menu.genre %>
+                  <% if @menu.errors[:genre].any? %>
+                      <div class="text-danger"><%= @menu.errors[:genre].first %></div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="flex-grow-1">
+                <div class="mb-3">
+                  <%= f.label :hot, "辛さレベル" %>
+                  <%= f.select :hot, [["1:甘口", "1:甘口"], ["2:甘口〜中辛", "2:甘口〜中辛"], ["3:中辛", "3:中辛"], ["4:中辛〜辛口", "4:中辛〜辛口"], ["5:辛口", "5:辛口"]], include_blank: "選択して下さい", selected: @menu.hot %>
+                  <% if @menu.errors[:hot].any? %>
+                      <div class="text-danger"><%= @menu.errors[:hot].first %></div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3 mx-3">
+              作り方
+              <div id="make_form_area">
+                <!-- 作り方ステップのフィールド -->
+                <% @menu.make.each_with_index do |make, index| %>
+                  <div class="form-group">
+                    <label for="make_step_<%= index + 1 %>">ステップ<%= index + 1 %></label>
+                    <textarea name="menu[make][]" id="make_step_<%= index + 1 %>" class="form-control" rows="8" placeholder="作り方のステップ"><%= make %></textarea>
+                    <button type="button" id="<%= index + 1 %>" onclick="deleteMakeStep(this.id)">削除</button>
+                  </div>
+                <% end %>
+              </div>
+              <% if @menu.errors[:make].any? %>
+                <div class="text-danger"><%= @menu.errors[:make].first %></div>
+              <% end %>
+              <button type="button" class="btn btn-secondary mt-2" onclick="addMakeStep()">作り方を追加</button>
+            </div>
+
+            <div class="mb-3 mx-3">
+              <%= f.label :point, "ポイント" %>
+              <%= f.text_area :point, class: 'form-control', rows: 8 %>
+              <% if @menu.errors[:point].any? %>
+                <div class="text-danger"><%= @menu.errors[:point].first %></div>
+              <% end %>
+            </div>
+
+            <%= f.submit '確認画面へ', class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
     </div>
