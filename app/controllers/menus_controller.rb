@@ -32,7 +32,7 @@ class MenusController < ApplicationController
     if params[:back]
       render :new
     elsif @menu.save
-      redirect_to @menu, notice: 'Menu was successfully created.'
+      redirect_to @menu, success: '投稿しました'
     else
       render :new
     end

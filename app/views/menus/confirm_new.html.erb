@@ -77,7 +77,7 @@
                 </div>
               </div>
 
-              <%= form_for :menu, url: menus_path do |f| %>
+              <%= form_for :menu, url: back_menus_path, method: :get do |f| %>
                 <% if current_user&.own?(@menu) %>
                   <%= f.hidden_field :name %>
                   <%= f.hidden_field :material, multiple: true, value: @menu.material %>
