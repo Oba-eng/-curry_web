@@ -1,3 +1,5 @@
+<%= javascript_include_tag 'menus' %>
+
 <%= form_with(model: @menu, url: confirm_new_menus_path, local: true) do |f| %>
   <div class="mb-3">
     <%= f.label :name, "メニュー名" %>

@@ -15,7 +15,7 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
     @q = Menu.ransack(params[:q])
-
+    
     if session[:menu_params]
       @menu.attributes = session[:menu_params]
       @menu.material = session[:menu_params][:material] || ['']
