@@ -67,26 +67,18 @@
       </div>
     </div>
 
-    <% if current_user&.own?(@menu) %>
-      <%= f.hidden_field :name %>
-      
-      <% @menu.material.each_with_index do |material, index| %>
-        <%= f.hidden_field "material[]", value: material %>
+    <%= form_for :menu, url: menus_path do |f| %>
+      <% if current_user&.own?(@menu) %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :material, multiple: true, value: @menu.material %>
+        <%= f.hidden_field :quantity, multiple: true, value: @menu.quantity %>
+        <%= f.hidden_field :make, multiple: true, value: @menu.make %>
+        <%= f.hidden_field :point %>
+        <%= f.hidden_field :menu_image_cache %>
+        <%= f.hidden_field :genre %>
+        <%= f.hidden_field :hot %>
+        <%= f.submit '戻る', name: 'back', class: 'btn btn-primary ml-2' %>
       <% end %>
-      
-      <% @menu.quantity.each_with_index do |quantity, index| %>
-        <%= f.hidden_field "quantity[]", value: quantity %>
-      <% end %>
-      
-      <% @menu.make.each_with_index do |make, index| %>
-        <%= f.hidden_field "make[]", value: make %>
-      <% end %>
-
-      <%= f.hidden_field :point %>
-      <%= f.hidden_field :menu_image_cache %>
-      <%= f.hidden_field :genre %>
-      <%= f.hidden_field :hot %>
-      <%= f.submit '戻る', name: 'back', class: 'btn btn-primary ml-2' %>
     <% end %>
     <%= f.submit '公開する', class: 'btn btn-primary ml-2' %>
   </div>

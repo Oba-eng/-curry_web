@@ -24,4 +24,12 @@ class Menu < ApplicationRecord
   def self.search(query)
     ransack(name_or_material_cont: query).result
   end
+
+  private
+
+  def make_present
+    if make.blank? || make.all?(&:blank?)
+      errors.add(:make, '作り方を入力してください')
+    end
+  end
 end

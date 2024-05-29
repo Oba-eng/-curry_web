@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resource :favorite, only: [:destroy]
 
     collection do
+      post :new, action: :back
       post :confirm_new, action: :confirm_new
     end
   end

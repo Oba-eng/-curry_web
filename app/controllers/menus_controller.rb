@@ -15,18 +15,9 @@ class MenusController < ApplicationController
   def new
     @menu = Menu.new
     @q = Menu.ransack(params[:q])
-    
-    if session[:menu_params]
-      @menu.attributes = session[:menu_params]
-      @menu.material = session[:menu_params][:material] || ['']
-      @menu.quantity = session[:menu_params][:quantity] || ['']
-      @menu.make = session[:menu_params][:make] || ['']
-      session.delete(:menu_params)
-    else
-      @menu.material = [''] if @menu.material.blank?
-      @menu.quantity = [''] if @menu.quantity.blank? 
-      @menu.make = [''] if @menu.make.blank? 
-    end
+    @menu.material = [''] if @menu.material.blank? # 空の要素を1つ追加して初期化
+    @menu.quantity = [''] if @menu.quantity.blank? # 空の要素を1つ追加して初期化
+    @menu.make = [''] if @menu.make.blank? # 空の要素を1つ追加して初期化
   end
 
   def edit
@@ -39,15 +30,12 @@ class MenusController < ApplicationController
     @menu = current_user.menus.new(menu_params)
     
     if params[:back]
-      session[:menu_params] = menu_params
-      redirect_to new_menu_path and return
+      render :new
+    elsif @menu.save
+      redirect_to @menu, notice: 'Menu was successfully created.'
+    else
+      render :new
     end
-    
-    unless @menu.save
-      render :new and return
-    end
-  
-    redirect_to @menu, notice: 'Menu was successfully created.'
   end
 
   def update
@@ -76,12 +64,19 @@ class MenusController < ApplicationController
   def confirm_new
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-  
+    
     if @menu.valid?
+      session[:menu] = @menu.attributes
       render :confirm_new
     else
       render :new
     end
+  end
+
+  def back
+    @q = Menu.ransack(params[:q])
+    @menu = Menu.new(session[:menu]) if session[:menu]
+    render :new
   end
 
   private
