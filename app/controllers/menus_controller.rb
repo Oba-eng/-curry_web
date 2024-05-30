@@ -28,7 +28,7 @@ class MenusController < ApplicationController
   def create
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-    
+
     if params[:back]
       render :new
     elsif @menu.save
@@ -64,14 +64,20 @@ class MenusController < ApplicationController
   def confirm_new
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
-    
+  
+    if session[:menu_image_cache].present?
+      @menu.menu_image.retrieve_from_cache!(session[:menu_image_cache])
+    end
+  
     if @menu.valid?
       session[:menu] = @menu.attributes
+      session[:menu_image_cache] = @menu.menu_image.cache_name
       render :confirm_new
     else
       render :new
     end
   end
+  
 
   def back
     @q = Menu.ransack(params[:q])
