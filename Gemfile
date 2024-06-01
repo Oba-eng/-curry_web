@@ -79,3 +79,5 @@ gem 'rinku'
 gem 'dotenv-rails'
 gem 'net-smtp'
 #gem 'polyamorous', '>= 2.3.1'
+
+gem 'dotenv-rails', groups: [:development, :test]
