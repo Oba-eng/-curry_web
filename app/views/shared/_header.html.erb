@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag 'custom_styles', media: 'all' %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">CarryWeb</a>
@@ -17,33 +18,52 @@
 
 <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
 <%= render 'shared/search', q: @q, url: menus_path %>
-  <% if current_user.present? %>
-    <li class="nav-item">
-      <!-- <%= link_to 'マイカレー', mypage_tree_index_path, class: 'nav-link' %> -->
-      <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'いいね一覧', favorites_user_path(current_user), class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to '投稿一覧', menus_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to '投稿作成', new_menu_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link', data: { confirm: 'ログアウトします' } %>
-    </li>
-  <% else %>
-    <li class="nav-item">
-      <%= link_to 'ユーザー登録', new_user_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'ログイン', new_session_path, class: 'nav-link' %>
-    </li>
-  <% end %>
+<% if current_user.present? %>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to user_path(current_user), class: 'nav-link small-text custom-padding-link' do %>
+      <i class="bi bi-person-square"></i>
+      <span>マイページ</span>
+    <% end %>
+  </li>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to favorites_user_path(current_user), class: 'nav-link small-text custom-padding-link' do %>
+      <i class="bi bi-star"></i>
+      <span>いいね一覧</span>
+    <% end %>
+  </li>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to menus_path, class: 'nav-link small-text custom-padding-link' do %>
+      <i class="bi bi-window"></i>
+      <span>投稿一覧</span>
+    <% end %>
+  </li>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to new_menu_path, class: 'nav-link small-text custom-padding-link' do %>
+      <i class="bi bi-window-plus"></i>
+      <span>投稿作成</span>
+    <% end %>
+  </li>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to logout_path, method: :delete, class: 'nav-link small-text custom-padding-link', data: { confirm: 'ログアウトします' } do %>
+      <i class="bi bi-box-arrow-right"></i>
+      <span>ログアウト</span>
+    <% end %>
+  </li>
+<% else %>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to new_user_path, class: 'nav-link small-text custom-padding-link' do %>
+      <i class="bi bi-person-plus"></i>
+      <span>登録</span>
+    <% end %>
+  </li>
+  <li class="nav-item d-flex flex-column align-items-center">
+    <%= link_to new_session_path, class: 'nav-link small-text custom-padding-link' do %>
+      <i class="bi bi-box-arrow-in-left"></i>
+      <span>ログイン</span>
+    <% end %>
+  </li>
+<% end %>
 </ul>
-
 
 </div>
   </div>

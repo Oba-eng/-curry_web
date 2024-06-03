@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( menus.js )
 Rails.application.config.assets.precompile += %w( form.js )
 Rails.application.config.assets.precompile += %w( make.js )
+Rails.application.config.assets.precompile += %w( custom_styles.css )
