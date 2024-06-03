@@ -25,3 +25,7 @@
   align-items: center;
 }
 
+.navbar-custom .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
