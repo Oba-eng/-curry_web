@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :require_login, only: %i[privacy terms]
+
   def privacy
     @q = Menu.ransack(params[:q])
     render 'pages/privacy'

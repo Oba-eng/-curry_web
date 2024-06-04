@@ -46,6 +46,12 @@
           </li>
         <% else %>
           <li class="nav-item d-flex flex-column align-items-center">
+            <%= link_to menus_path, class: 'nav-link small-text custom-padding-link' do %>
+              <i class="bi bi-window"></i>
+              <span>投稿一覧</span>
+            <% end %>
+          </li>
+          <li class="nav-item d-flex flex-column align-items-center">
             <%= link_to new_user_path, class: 'nav-link small-text custom-padding-link' do %>
               <i class="bi bi-person-plus"></i>
               <span>登録</span>
