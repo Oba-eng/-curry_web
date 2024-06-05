@@ -9,6 +9,9 @@ module ApplicationHelper
       keywords: 'カレー,スパイスカレー,カレーレシピ',
       canonical: "https://www.carry-web.net#{request.original_fullpath}",
       separator: '|',
+      icon: [
+        { href: image_url('favicon.ico') },
+      ],
       og: {
         site_name: 'curry-web',
         title: 'オリジナルカレー投稿アプリ',
