@@ -30,8 +30,8 @@
           <!-- 材料と分量のフィールド -->
           <% @menu.material.each_with_index do |material, index| %>
             <div class="form-group">
-              <input type="text" name="menu[material][]" id="a<%= index %>" value="<%= material %>" placeholder="材料">
-              <input type="text" name="menu[quantity][]" id="b<%= index %>" value="<%= @menu.quantity[index] %>" placeholder="分量">
+              <input type="text" name="menu[material][]" id="a<%= index %>" value="<%= material %>" placeholder="材料　(例)玉ねぎ">
+              <input type="text" name="menu[quantity][]" id="b<%= index %>" value="<%= @menu.quantity[index] %>" placeholder="分量　(例)200g">
               <button type="button" id="<%= index %>" onclick="deleteForms(this.id)">削除</button>
             </div>
           <% end %>
