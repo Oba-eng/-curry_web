@@ -85,6 +85,13 @@ class MenusController < ApplicationController
     render :new
   end
 
+  def search
+    @menus = Menu.where("name like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def set_menu
       @menu = Menu.find(params[:id])

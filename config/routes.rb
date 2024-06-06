@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get :back, action: :back
       post :confirm_new, action: :confirm_new
     end
+    get :search, on: :collection
   end
 
   namespace :mypage do

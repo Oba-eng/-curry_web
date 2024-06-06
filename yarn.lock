@@ -3,34 +3,26 @@
 
 
 "@rails/ujs@^7.1.3-2":
-  "integrity" "sha512-U3gH3ukdcIOhRpHCHDNfKLlp8f9GbsJ8x1l9M0Np4/Bv5/bH2hiDuZh3PNm762mBKDDcxU5hI2sGWGCNPOzRBQ=="
-  "resolved" "https://registry.npmjs.org/@rails/ujs/-/ujs-7.1.3-2.tgz"
-  "version" "7.1.3-2"
+  version "7.1.3-2"
+  resolved "https://registry.npmjs.org/@rails/ujs/-/ujs-7.1.3-2.tgz"
+  integrity sha512-U3gH3ukdcIOhRpHCHDNfKLlp8f9GbsJ8x1l9M0Np4/Bv5/bH2hiDuZh3PNm762mBKDDcxU5hI2sGWGCNPOzRBQ==
 
-"jquery@^3.7.1":
-  "integrity" "sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg=="
-  "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.7.1.tgz"
-  "version" "3.7.1"
+jquery@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.npmjs.org/jquery/-/jquery-3.7.1.tgz"
+  integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
 
-"js-tokens@^3.0.0 || ^4.0.0":
-  "version" "4.0.0"
+react-hook-form@^7.51.5:
+  version "7.51.5"
+  resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.51.5.tgz"
+  integrity sha512-J2ILT5gWx1XUIJRETiA7M19iXHlG74+6O3KApzvqB/w8S5NQR7AbU8HVZrMALdmDgWpRPYiZJl0zx8Z4L2mP6Q==
 
-"loose-envify@^1.1.0":
-  "version" "1.4.0"
-  dependencies:
-    "js-tokens" "^3.0.0 || ^4.0.0"
+stimulus-autocomplete@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/stimulus-autocomplete/-/stimulus-autocomplete-3.1.0.tgz#7c9292706556ed0a87abf60ea2688bf0ea1176a8"
+  integrity sha512-SmVViCdA8yCl99oV2kzllNOqYjx7wruY+1OjAVsDTkZMNFZG5j+SqDKHMYbu+dRFy/SWq/PParzwZHvLAgH+YA==
 
-"react-hook-form@^7.51.5":
-  "integrity" "sha512-J2ILT5gWx1XUIJRETiA7M19iXHlG74+6O3KApzvqB/w8S5NQR7AbU8HVZrMALdmDgWpRPYiZJl0zx8Z4L2mP6Q=="
-  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.51.5.tgz"
-  "version" "7.51.5"
-
-"react@^16.8.0 || ^17 || ^18":
-  "version" "18.3.1"
-  dependencies:
-    "loose-envify" "^1.1.0"
-
-"turbolinks@^5.2.0":
-  "integrity" "sha512-pMiez3tyBo6uRHFNNZoYMmrES/IaGgMhQQM+VFF36keryjb5ms0XkVpmKHkfW/4Vy96qiGW3K9bz0tF5sK9bBw=="
-  "resolved" "https://registry.npmjs.org/turbolinks/-/turbolinks-5.2.0.tgz"
-  "version" "5.2.0"
+turbolinks@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/turbolinks/-/turbolinks-5.2.0.tgz"
+  integrity sha512-pMiez3tyBo6uRHFNNZoYMmrES/IaGgMhQQM+VFF36keryjb5ms0XkVpmKHkfW/4Vy96qiGW3K9bz0tF5sK9bBw==

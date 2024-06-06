@@ -1,12 +1,14 @@
 <%= search_form_for @q, url: url, html: { class: 'form-inline d-flex align-items-center' } do |f| %>
-  <div class="form-group">
-    <%= f.search_field :name_cont, class: 'form-control', placeholder: 'メニュー名' %>
-  </div>
-  <div class="form-group ml-2">
-    <%= f.select :hot_eq, [["辛さレベル", ""], ["1:甘口", "1:甘口"], ["2:甘口〜中辛", "2:甘口〜中辛"], ["3:中辛", "3:中辛"], ["4:中辛〜辛口", "4:中辛〜辛口"], ["5:辛口", "5:辛口"]], { include_blank: false }, class: 'form-control' %>
-  </div>
-  <div class="form-group ml-2">
-    <%= f.select :genre_eq, [["カレージャンル", ""],["バターチキンカレー", "バターチキンカレー"], ["ドライカレー", "ドライカレー"], ["グリーンカレー", "グリーンカレー"], ["スープカレー", "スープカレー"], ["ドライカレー", "ドライカレー"], ["ビーフカレー", "ビーフカレー"], ["ポークカレー", "ポークカレー"], ["カツカレー", "カツカレー"], ["シーフードカレー", "シーフードカレー"], ["野菜カレー", "野菜カレー"], ["その他", "その他"]], { include_blank: false }, class: 'form-control' %>
+  <div data-controller="autocomplete" data-autocomplete-url-value="/cats/search" role="combobox" class="d-flex align-items-center">
+    <div class="form-group mr-2">
+      <%= f.search_field :name_cont, data: { autocomplete_target: 'input' }, class: 'form-control', placeholder: 'メニュー名' %>
+    </div>
+    <div class="form-group mr-2">
+      <%= f.select :hot_eq, [["辛さレベル", ""], ["1:甘口", "1:甘口"], ["2:甘口〜中辛", "2:甘口〜中辛"], ["3:中辛", "3:中辛"], ["4:中辛〜辛口", "4:中辛〜辛口"], ["5:辛口", "5:辛口"]], { include_blank: false }, class: 'form-control' %>
+    </div>
+    <div class="form-group mr-2">
+      <%= f.select :genre_eq, [["カレージャンル", ""],["バターチキンカレー", "バターチキンカレー"], ["ドライカレー", "ドライカレー"], ["グリーンカレー", "グリーンカレー"], ["スープカレー", "スープカレー"], ["ドライカレー", "ドライカレー"], ["ビーフカレー", "ビーフカレー"], ["ポークカレー", "ポークカレー"], ["カツカレー", "カツカレー"], ["シーフードカレー", "シーフードカレー"], ["野菜カレー", "野菜カレー"], ["その他", "その他"]], { include_blank: false }, class: 'form-control' %>
+    </div>
   </div>
   <%= f.submit '検索', class: 'btn btn-primary ml-2' %>
 <% end %>
