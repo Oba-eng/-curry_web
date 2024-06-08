@@ -74,6 +74,7 @@ gem 'devise'
 gem 'pg'
 gem 'sprockets-rails'
 gem 'rinku'
+gem 'config'
 
 #↓メール関係
 gem 'dotenv-rails'
