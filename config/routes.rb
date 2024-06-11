@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   # Googleログイン
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" 
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
-
+  post '/google_login_api/callback', to: 'google_login_api#callback'
+  
   root 'menus#index'
 
   resources :users do

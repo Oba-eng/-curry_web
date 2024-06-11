@@ -20,7 +20,25 @@
   <div>
     <%= f.submit '登録', class: 'btn btn-primary' %>
   </div>
-  <%= link_to 'Login with Google', auth_at_provider_path(provider: :google) %>
+
+  <div>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- Googleログインボタンの表示  -->
+    <div id="g_id_onload"
+      data-client_id="212565794221-0799kda9o36nic7us68lel6etq4aps6v.apps.googleusercontent.com"
+      data-login_uri="http://localhost:3000/google_login_api/callback"
+      data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+      data-type="standard"
+      data-size="large"
+      data-theme="outline"
+      data-text="sign_in_with"
+      data-shape="rectangular"
+      data-logo_alignment="left">
+    </div>
+  </div>
+
 <% end %>
 </div>
 </div>

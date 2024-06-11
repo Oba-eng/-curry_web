@@ -5,10 +5,6 @@ class User < ApplicationRecord
 
   has_many :menus, :dependent => :destroy
 
-  # Googleログイン
-  has_many :authentications, :dependent => :destroy
-  accepts_nested_attributes_for :authentications
-
   # お気に入り機能
   has_many :favorites, :dependent => :destroy
   has_many :favorite_menus, through: :favorites, source: :menu

@@ -83,3 +83,6 @@ gem 'net-smtp'
 
 gem 'dotenv-rails', groups: [:development, :test]
 gem "meta-tags"
+
+# Googleログイン
+gem 'googleauth'
