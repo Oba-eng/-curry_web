@@ -88,7 +88,7 @@
 
   <div class="mb-3 mx-3">
     <%= f.label :point, "ポイント" %>
-    <%= f.text_area :point, class: 'form-control', rows: 8 %>
+    <%= f.text_area :point, placeholder: "こだわったポイントなどを記入", class: 'form-control', rows: 8 %>
     <% if @menu.errors[:point].any? %>
       <div class="text-danger"><%= @menu.errors[:point].first %></div>
     <% end %>

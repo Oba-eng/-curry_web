@@ -13,14 +13,14 @@ class GoogleLoginApiController < ApplicationController
     end
     user.save if user.new_record?
     session[:user_id] = user.id
-    redirect_to root_path, notice: 'ログインしました'
+    redirect_to root_path, success: 'ログインしました'
   end
 
   private
 
   def verify_g_csrf_token
     if cookies["g_csrf_token"].blank? || params[:g_csrf_token].blank? || cookies["g_csrf_token"] != params[:g_csrf_token]
-      redirect_to root_path, notice: '不正なアクセスです'
+      redirect_to root_path, danger: '不正なアクセスです'
     end
   end
 end
