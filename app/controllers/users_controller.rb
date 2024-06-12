@@ -40,8 +40,9 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     @user.destroy
+    reset_session
     flash[:success] = 'ユーザーを削除しました。'
-    redirect_to :root #削除に成功すればrootページに戻る
+    redirect_to :root
   end
 
   def favorites 
