@@ -40,14 +40,10 @@ class MenusController < ApplicationController
 
   def update
     @q = Menu.ransack(params[:q])
-    respond_to do |format|
-      if @menu.update(menu_params)
-        format.html { redirect_to menu_url(@menu), success: '更新しました' }
-        format.json { render :show, status: :ok, location: @menu }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @menu.errors, status: :unprocessable_entity }
-      end
+    if @menu.update(menu_params)
+      redirect_to menu_url(@menu), success: '更新しました'
+    else
+      render :edit
     end
   end
 
