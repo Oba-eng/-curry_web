@@ -65,7 +65,7 @@ class MenusController < ApplicationController
     @q = Menu.ransack(params[:q])
     @menu = current_user.menus.new(menu_params)
   
-    if session[:menu_image_cache].present?
+    if !@menu.menu_image.present?
       @menu.menu_image.retrieve_from_cache!(session[:menu_image_cache])
     end
   
