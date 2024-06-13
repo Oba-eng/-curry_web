@@ -1,24 +1,31 @@
-# README
+# Curry-web
+<img src="app/assets/images/ogp.png">
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# サービス概要  
+Curry-webはカレー愛好家のためのカレーレシピ投稿アプリです。このアプリは、私自身がカレーが好きでありカレーは家庭ごとに独自の味や秘密のレシピが存在することから、自分好みのカレーを見つけたり共有したりすることができるカレー愛好家のためのwebアプリを開発しました。このアプリでは、ユーザーは自分のオリジナルカレーレシピを投稿したり、他のユーザーが投稿したレシピを閲覧したりすることができます。
 
-Things you may want to cover:
+# 機能紹介
+| レシピ一覧 | レシピ投稿 |
+----|---- 
+| [![Image from Gyazo](https://i.gyazo.com/bb3d8459416fc23503cb644832b4b602.gif)](https://gyazo.com/bb3d8459416fc23503cb644832b4b602) | [![Image from Gyazo](https://i.gyazo.com/eaf0b7a754fe1f1ade4853089b92413c.gif)](https://gyazo.com/eaf0b7a754fe1f1ade4853089b92413c) |
+| 辛さレベル、カレージャンルでの検索をできるようにし自分好みのカレーを見つけやすいようにしました。 | 材料・分量、作り方を任意の数フォームを作成できるように工夫しました。 |
 
-* Ruby version
+| お気に入り機能 | ユーザー登録機能 |
+----|---- 
+| [![Image from Gyazo](https://i.gyazo.com/b96f11820fface86e06d9a903e5b8bb3.gif)](https://gyazo.com/b96f11820fface86e06d9a903e5b8bb3) | TD3 |
+| お気に入り機能でいつでもレシピを見返すことができます。 | 簡単にユーザー登録をできるようGoogleアカウントでログインできるようにしました。 |
 
-* System dependencies
+# 使用時術
+### バックエンド 
+- Ruby 3.0.2
+- Rails 6.1.4
+### フロントエンド  
+- bootstrap
+- javascript
+### インフラ
+- Heroku
 
-* Configuration
+# 画面遷移図
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# ER図
+[![Image from Gyazo](https://i.gyazo.com/68b6519dd870a7e1606f2f3337c80bae.png)](https://gyazo.com/68b6519dd870a7e1606f2f3337c80bae)
