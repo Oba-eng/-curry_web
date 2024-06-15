@@ -1,25 +1,21 @@
 /* ヘッダーの設定 */
 
-/* Smaller text size for links */
 .nav-link.small-text {
-  font-size: 0.7rem; /* フォントサイズを0.8倍に設定 */
+  font-size: 0.7rem;
 }
 
-/* Align icons and text vertically */
 .nav-item.d-flex.flex-column.align-items-center {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Set font size for icons */
 .nav-item i {
-  font-size: 1.5rem; /* Default size for all icons */
+  font-size: 1.5rem;
 }
 
-/* Override Bootstrap's default padding for nav-link */
 .nav-link {
-  padding: 3px 3px; /* Adjust these values as needed */
+  padding: 3px 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,4 +24,10 @@
 .navbar-custom .container {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.img-menu_image {
+  object-fit: contain; /* or contain, fill, etc. depending on your needs */
+  width: 100%; /* Ensure the image takes the full width of its container */
+  height: 200px; /* Set a specific height, adjust as needed */
 }
