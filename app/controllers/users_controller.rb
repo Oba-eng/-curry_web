@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @q = Menu.ransack(params[:q])
-    @name = current_user.name
+    @user = current_user
     @menus = current_user.menus
   end
 
