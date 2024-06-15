@@ -12,13 +12,20 @@ Curry-webはカレー愛好家のためのカレーレシピ投稿アプリで�
 
 | お気に入り機能 | ユーザー登録機能 |
 ----|---- 
-| [![Image from Gyazo](https://i.gyazo.com/b96f11820fface86e06d9a903e5b8bb3.gif)](https://gyazo.com/b96f11820fface86e06d9a903e5b8bb3) | TD3 |
+| [![Image from Gyazo](https://i.gyazo.com/b96f11820fface86e06d9a903e5b8bb3.gif)](https://gyazo.com/b96f11820fface86e06d9a903e5b8bb3) | [![Image from Gyazo](https://i.gyazo.com/18f2bc7cd683ac688524eedb73c1964d.gif)](https://gyazo.com/18f2bc7cd683ac688524eedb73c1964d) |
 | お気に入り機能でいつでもレシピを見返すことができます。 | 簡単にユーザー登録をできるようGoogleアカウントでログインできるようにしました。 |
 
 # 使用時術
 ### バックエンド 
 - Ruby 3.0.2
 - Rails 6.1.4
+- gem
+  - googleauth
+  - meta-tags
+  - ransack
+  - mini_magick
+  - carrierwave
+  - sorcery
 ### フロントエンド  
 - bootstrap
 - javascript
