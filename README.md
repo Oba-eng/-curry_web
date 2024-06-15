@@ -26,6 +26,7 @@ Curry-webはカレー愛好家のためのカレーレシピ投稿アプリで�
 - Heroku
 
 # 画面遷移図
+https://www.figma.com/design/q7widoIwWjuefhxADEomfm/%E7%84%A1%E9%A1%8C?node-id=157-2&t=QsC6sznatmoafY0j-1
 
 # ER図
 [![Image from Gyazo](https://i.gyazo.com/68b6519dd870a7e1606f2f3337c80bae.png)](https://gyazo.com/68b6519dd870a7e1606f2f3337c80bae)
