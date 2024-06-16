@@ -7,7 +7,7 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="bi bi-layout-text-sidebar-reverse"></i>
-            <%= @name %>さんの投稿一覧
+            <%= @user.name %>さんの投稿一覧
           </div>
           <table>
             <div class="card-body">
@@ -40,7 +40,7 @@
               <i class="bi bi-chevron-right"></i>
             </div>
             <div class="p-3">
-              <%= link_to "退会する", root_path, method: :delete, style: "text-decoration: none;",  data: { confirm: "投稿したメニューも削除され復元できません。本当に退会しますか？" }  %>
+              <%= link_to "退会する", user_path(@user), method: :delete, style: "text-decoration: none;",  data: { confirm: "投稿したメニューも削除され復元できません。本当に退会しますか？" }  %>
               <i class="bi bi-chevron-right"></i>
             </div>
           </div>

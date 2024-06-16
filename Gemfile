@@ -11,41 +11,73 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.1.0'
-# Use Uglifier as compressor for JavaScript assets
+# Use Terser as compressor for JavaScript assets
 gem 'terser'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
-
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# Turbolinks makes navigating your web application faster
 gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# Build JSON APIs with ease
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
+# Authentication and authorization
+gem 'sorcery'
+
+# Debugging tools
+gem 'pry-byebug'
+gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+# Front-end framework
+gem 'bootstrap'
+gem 'sassc-rails'
+
+# File uploads
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
+
+# Search functionality
+gem 'ransack', '>= 2.5.0'
+
+# Pagination
+gem 'will_paginate', '~> 3.1.0'
+
+# View decorators
+gem 'draper'
+
+# Icon library
+gem 'font-awesome-sass', '~> 5.15'
+
+# PostgreSQL as the database for Active Record
+gem 'pg'
+
+# Sprockets for asset management
+gem 'sprockets-rails'
+
+# Automatically creates HTML links
+gem 'rinku'
+
+# Application configuration management
+gem 'config'
+
+# Manage environment variables
+gem 'dotenv-rails', groups: [:development, :test]
+
+# SEO tags
+gem "meta-tags"
+
+# Google login
+gem 'googleauth'
+
+# Windows-specific gems
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  # Access an interactive console on exception pages or by calling 'console' anywhere in the code
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the background
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -57,32 +89,3 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'sorcery'
-gem 'pry-byebug'
-gem 'bootstrap'
-gem 'sassc-rails'
-gem 'carrierwave', '~> 2.0'
-gem 'mini_magick'
-gem 'ransack', '>= 2.5.0'
-gem 'will_paginate', '~> 3.1.0'
-gem 'draper'
-gem 'font-awesome-sass', '~> 5.15'
-gem 'devise'
-gem 'pg'
-gem 'sprockets-rails'
-gem 'rinku'
-gem 'config'
-
-#↓メール関係
-gem 'dotenv-rails'
-gem 'net-smtp'
-#gem 'polyamorous', '>= 2.3.1'
-
-gem 'dotenv-rails', groups: [:development, :test]
-gem "meta-tags"
-
-# Googleログイン
-gem 'googleauth'
